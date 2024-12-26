@@ -1,0 +1,62 @@
+extraction_metrics:
+  Drivers:
+    duration_seconds: 0.17254161834716797
+    partition_count: 1
+    record_count: 200
+  Notifications:
+    duration_seconds: 0.20786738395690918
+    partition_count: 4
+    record_count: 9182
+  Orders:
+    duration_seconds: 2.8696398735046387
+    partition_count: 4
+    record_count: 5168
+  Payments:
+    duration_seconds: 0.14651775360107422
+    partition_count: 4
+    record_count: 5168
+  Shipments:
+    duration_seconds: 0.17804789543151855
+    partition_count: 4
+    record_count: 3459
+  Users:
+    duration_seconds: 0.1292271614074707
+    partition_count: 1
+    record_count: 1000
+load_metrics:
+  Drivers:
+    duration_seconds: 0.19634270668029785
+    record_count: 200
+    write_partitions: null
+  Notifications:
+    duration_seconds: 0.7455317974090576
+    record_count: 9182
+    write_partitions:
+    - notification_date
+  Orders:
+    duration_seconds: 1.1389610767364502
+    record_count: 5168
+    write_partitions:
+    - created_at
+    - status
+  Payments:
+    duration_seconds: 1.113156795501709
+    record_count: 5168
+    write_partitions:
+    - payment_date
+    - payment_status
+  Shipments:
+    duration_seconds: 0.24816131591796875
+    record_count: 3459
+    write_partitions:
+    - status
+  Users:
+    duration_seconds: 0.19873881340026855
+    record_count: 1000
+    write_partitions: null
+pipeline_info:
+  duration_seconds: 11.379328
+  end_time: 2024-12-24 09:30:35.730351
+  environment: development
+  start_time: 2024-12-24 09:30:24.351023
+  user: ponydasierra

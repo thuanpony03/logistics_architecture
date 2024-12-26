@@ -1,0 +1,13 @@
+2024-12-24 14:47:40,159 - src.load.datalake_loader - INFO - Created zone directory: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw
+2024-12-24 14:47:40,166 - src.load.datalake_loader - INFO - Created zone directory: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/staging
+2024-12-24 14:47:40,172 - src.load.datalake_loader - INFO - Created zone directory: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/processed
+2024-12-24 14:47:40,172 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 07:47:36.723879
+2024-12-24 14:47:40,173 - __main__ - INFO - Starting data extraction phase
+2024-12-24 14:47:40,173 - __main__ - INFO - Processing table: Orders
+2024-12-24 14:47:40,173 - __main__ - ERROR - Failed processing table Orders: MySQLExtractor.extract_table() got an unexpected keyword argument 'batch_size'
+2024-12-24 14:47:40,173 - __main__ - ERROR - Error in extraction phase: MySQLExtractor.extract_table() got an unexpected keyword argument 'batch_size'
+2024-12-24 14:47:40,173 - __main__ - ERROR - Pipeline failed: MySQLExtractor.extract_table() got an unexpected keyword argument 'batch_size'
+2024-12-24 14:47:40,173 - py4j.clientserver - INFO - Closing down clientserver connection

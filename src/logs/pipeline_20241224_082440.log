@@ -1,0 +1,67 @@
+2024-12-24 15:24:40,738 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 08:24:37.120337
+2024-12-24 15:24:40,738 - __main__ - INFO - Starting data extraction phase
+2024-12-24 15:24:40,738 - __main__ - INFO - Processing table: Orders
+2024-12-24 15:24:40,738 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-24 15:24:43,751 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 5,168
+Partitions: 4
+Duration: 2.62 seconds
+2024-12-24 15:24:43,858 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-24 15:24:45,012 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 5,168
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 1.09 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-24 15:24:45,013 - __main__ - INFO - Completed Orders: 5,168 records processed in 4.27 seconds
+2024-12-24 15:24:45,013 - __main__ - INFO - Processing table: Shipments
+2024-12-24 15:24:45,013 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-24 15:24:45,143 - src.extract.mysql_extractor - INFO - Completed extraction of Shipments:
+Records: 3,459
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-24 15:24:45,196 - src.load.datalake_loader - INFO - Starting raw zone load for Shipments
+2024-12-24 15:24:45,441 - src.load.datalake_loader - INFO - Completed raw zone load for Shipments:
+Records: 3,459
+Partitioning: partitioned by ['status']
+Duration: 0.20 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Shipments
+2024-12-24 15:24:45,441 - __main__ - INFO - Completed Shipments: 3,459 records processed in 0.43 seconds
+2024-12-24 15:24:45,441 - __main__ - INFO - Processing table: Payments
+2024-12-24 15:24:45,441 - src.extract.mysql_extractor - INFO - Starting extraction of table Payments
+2024-12-24 15:24:45,545 - src.extract.mysql_extractor - INFO - Completed extraction of Payments:
+Records: 5,168
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-24 15:24:45,602 - src.load.datalake_loader - INFO - Starting raw zone load for Payments
+2024-12-24 15:24:45,950 - src.load.datalake_loader - INFO - Completed raw zone load for Payments:
+Records: 5,168
+Partitioning: partitioned by ['payment_date_partition', 'payment_status']
+Duration: 0.31 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Payments
+2024-12-24 15:24:45,950 - __main__ - INFO - Completed Payments: 5,168 records processed in 0.51 seconds
+2024-12-24 15:24:45,950 - __main__ - INFO - Processing table: Notifications
+2024-12-24 15:24:45,950 - src.extract.mysql_extractor - INFO - Starting extraction of table Notifications
+2024-12-24 15:24:46,033 - src.extract.mysql_extractor - INFO - Completed extraction of Notifications:
+Records: 9,182
+Partitions: 4
+Duration: 0.03 seconds
+2024-12-24 15:24:46,078 - src.load.datalake_loader - INFO - Starting raw zone load for Notifications
+2024-12-24 15:24:46,287 - src.load.datalake_loader - INFO - Completed raw zone load for Notifications:
+Records: 9,182
+Partitioning: partitioned by ['notification_date_partition']
+Duration: 0.17 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Notifications
+2024-12-24 15:24:46,287 - __main__ - INFO - Completed Notifications: 9,182 records processed in 0.34 seconds
+2024-12-24 15:24:46,287 - __main__ - INFO - Processing table: Users
+2024-12-24 15:24:46,287 - src.extract.mysql_extractor - INFO - Starting extraction of table Users
+2024-12-24 15:24:46,340 - src.extract.mysql_extractor - INFO - Completed extraction of Users:
+Records: 1,000
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-24 15:24:46,377 - __main__ - ERROR - Failed processing table Users: cannot access local variable 'partition_cols' where it is not associated with a value
+2024-12-24 15:24:46,377 - __main__ - ERROR - Error in extraction phase: cannot access local variable 'partition_cols' where it is not associated with a value
+2024-12-24 15:24:46,377 - __main__ - ERROR - Pipeline failed: cannot access local variable 'partition_cols' where it is not associated with a value
+2024-12-24 15:24:46,378 - py4j.clientserver - INFO - Closing down clientserver connection

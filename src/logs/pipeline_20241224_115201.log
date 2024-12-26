@@ -1,0 +1,25 @@
+2024-12-24 18:52:01,658 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 11:51:58.112823
+2024-12-24 18:52:01,658 - __main__ - INFO - Starting data extraction phase
+2024-12-24 18:52:01,658 - __main__ - INFO - Processing table: Orders
+2024-12-24 18:52:01,658 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-24 18:52:04,594 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 1,500
+Partitions: 4
+Duration: 2.55 seconds
+2024-12-24 18:52:04,700 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-24 18:52:05,742 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 1,500
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 0.98 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-24 18:52:05,742 - __main__ - INFO - Completed Orders: 1,500 records processed in 4.08 seconds
+2024-12-24 18:52:05,742 - __main__ - INFO - Processing table: Shipments
+2024-12-24 18:52:05,742 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-24 18:52:05,779 - src.extract.mysql_extractor - ERROR - Error extracting table Shipments: Expected integer for max_id, got NoneType
+2024-12-24 18:52:05,779 - __main__ - ERROR - Failed processing table Shipments: Expected integer for max_id, got NoneType
+2024-12-24 18:52:05,779 - __main__ - ERROR - Error in extraction phase: Expected integer for max_id, got NoneType
+2024-12-24 18:52:05,779 - __main__ - ERROR - Pipeline failed: Expected integer for max_id, got NoneType
+2024-12-24 18:52:05,780 - py4j.clientserver - INFO - Closing down clientserver connection

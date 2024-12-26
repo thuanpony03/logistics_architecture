@@ -1,0 +1,113 @@
+2024-12-25 10:16:30,559 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-25 03:16:26.564511
+2024-12-25 10:16:30,560 - __main__ - INFO - Starting data extraction phase
+2024-12-25 10:16:30,560 - __main__ - INFO - Processing table: Orders
+2024-12-25 10:16:30,560 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-25 10:16:33,593 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 5,000
+Partitions: 4
+Duration: 2.65 seconds
+2024-12-25 10:16:33,703 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-25 10:16:34,839 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 5,000
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 1.07 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-25 10:16:34,839 - __main__ - INFO - Completed Orders: 5,000 records processed in 4.28 seconds
+2024-12-25 10:16:34,839 - __main__ - INFO - Processing table: Shipments
+2024-12-25 10:16:34,839 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-25 10:16:34,966 - src.extract.mysql_extractor - INFO - Completed extraction of Shipments:
+Records: 3,756
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:16:35,017 - src.load.datalake_loader - INFO - Starting raw zone load for Shipments
+2024-12-25 10:16:35,691 - src.load.datalake_loader - INFO - Completed raw zone load for Shipments:
+Records: 3,756
+Partitioning: partitioned by ['status']
+Duration: 0.60 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Shipments
+2024-12-25 10:16:35,691 - __main__ - INFO - Completed Shipments: 3,756 records processed in 0.85 seconds
+2024-12-25 10:16:35,691 - __main__ - INFO - Processing table: Payments
+2024-12-25 10:16:35,691 - src.extract.mysql_extractor - INFO - Starting extraction of table Payments
+2024-12-25 10:16:35,790 - src.extract.mysql_extractor - INFO - Completed extraction of Payments:
+Records: 5,000
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:16:35,865 - src.load.datalake_loader - INFO - Starting raw zone load for Payments
+2024-12-25 10:16:36,517 - src.load.datalake_loader - INFO - Completed raw zone load for Payments:
+Records: 5,000
+Partitioning: partitioned by ['payment_date_partition', 'payment_status']
+Duration: 0.59 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Payments
+2024-12-25 10:16:36,517 - __main__ - INFO - Completed Payments: 5,000 records processed in 0.83 seconds
+2024-12-25 10:16:36,517 - __main__ - INFO - Processing table: Notifications
+2024-12-25 10:16:36,517 - src.extract.mysql_extractor - INFO - Starting extraction of table Notifications
+2024-12-25 10:16:36,644 - src.extract.mysql_extractor - INFO - Completed extraction of Notifications:
+Records: 3,756
+Partitions: 4
+Duration: 0.05 seconds
+2024-12-25 10:16:36,720 - src.load.datalake_loader - INFO - Starting raw zone load for Notifications
+2024-12-25 10:16:37,015 - src.load.datalake_loader - INFO - Completed raw zone load for Notifications:
+Records: 3,756
+Partitioning: partitioned by ['notification_date_partition']
+Duration: 0.25 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Notifications
+2024-12-25 10:16:37,015 - __main__ - INFO - Completed Notifications: 3,756 records processed in 0.50 seconds
+2024-12-25 10:16:37,015 - __main__ - INFO - Processing table: Users
+2024-12-25 10:16:37,015 - src.extract.mysql_extractor - INFO - Starting extraction of table Users
+2024-12-25 10:16:37,067 - src.extract.mysql_extractor - INFO - Completed extraction of Users:
+Records: 1,000
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-25 10:16:37,102 - src.load.datalake_loader - INFO - Starting raw zone load for Users
+2024-12-25 10:16:37,238 - src.load.datalake_loader - INFO - Completed raw zone load for Users:
+Records: 1,000
+Partitioning: not partitioned
+Duration: 0.10 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Users
+2024-12-25 10:16:37,239 - __main__ - INFO - Completed Users: 1,000 records processed in 0.22 seconds
+2024-12-25 10:16:37,239 - __main__ - INFO - Processing table: Drivers
+2024-12-25 10:16:37,239 - src.extract.mysql_extractor - INFO - Starting extraction of table Drivers
+2024-12-25 10:16:37,297 - src.extract.mysql_extractor - INFO - Completed extraction of Drivers:
+Records: 200
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-25 10:16:37,347 - src.load.datalake_loader - INFO - Starting raw zone load for Drivers
+2024-12-25 10:16:37,465 - src.load.datalake_loader - INFO - Completed raw zone load for Drivers:
+Records: 200
+Partitioning: not partitioned
+Duration: 0.08 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Drivers
+2024-12-25 10:16:37,466 - __main__ - INFO - Completed Drivers: 200 records processed in 0.23 seconds
+2024-12-25 10:16:37,466 - __main__ - INFO - Data extraction phase completed in 6.91 seconds
+2024-12-25 10:16:37,466 - __main__ - INFO - Starting data transformation phase
+2024-12-25 10:16:37,466 - src.transform.transform_executor - INFO - Starting transformation process
+Timestamp: 2024-12-24 09:43:35
+User: thuanpony03
+2024-12-25 10:16:37,466 - src.transform.transform_executor - INFO - Starting dimension transformation at 2024-12-24 09:43:35
+2024-12-25 10:16:37,466 - src.transform.dimension_builder - INFO - Building date dimension from 2024-01-01 to 2024-12-31
+2024-12-25 10:16:38,284 - src.transform.dimension_builder - INFO - Successfully built date dimension with 366 rows
+2024-12-25 10:16:38,533 - src.transform.dimension_builder - INFO - Building user dimension
+2024-12-25 10:16:38,710 - src.transform.dimension_builder - INFO - Successfully built user dimension with 1000 rows
+2024-12-25 10:16:38,710 - src.transform.dimension_builder - INFO - Building driver dimension
+2024-12-25 10:16:39,006 - src.transform.dimension_builder - INFO - Successfully built driver dimension with 200 rows
+2024-12-25 10:16:39,016 - src.transform.dimension_builder - INFO - Building location dimension
+2024-12-25 10:16:41,192 - src.transform.dimension_builder - INFO - Successfully built location dimension with 13756 unique addresses
+2024-12-25 10:16:41,485 - src.transform.dimension_builder - INFO - Building payment method dimension
+2024-12-25 10:16:43,259 - src.transform.dimension_builder - INFO - Successfully built payment method dimension with 3 rows
+2024-12-25 10:16:46,057 - src.transform.transform_executor - INFO - Completed dimension transformation with counts:
+date: 366 rows
+user: 1000 rows
+driver: 200 rows
+location: 13756 rows
+payment_method: 3 rows
+2024-12-25 10:16:46,057 - src.transform.transform_executor - INFO - Starting fact transformation at 2024-12-24 09:43:35
+2024-12-25 10:16:46,172 - src.transform.fact_builder - INFO - Building orders fact table
+2024-12-25 10:16:46,299 - src.transform.fact_builder - ERROR - Error building orders fact table: 'str' object has no attribute 'alias'
+2024-12-25 10:16:46,299 - src.transform.transform_executor - ERROR - Error in fact transformation: 'str' object has no attribute 'alias'
+2024-12-25 10:16:46,299 - src.transform.transform_executor - ERROR - Transform process failed: 'str' object has no attribute 'alias'
+2024-12-25 10:16:46,299 - __main__ - ERROR - Error in transformation phase: 'str' object has no attribute 'alias'
+2024-12-25 10:16:46,299 - __main__ - ERROR - Pipeline failed: 'str' object has no attribute 'alias'
+2024-12-25 10:16:46,300 - py4j.clientserver - INFO - Closing down clientserver connection

@@ -1,0 +1,12 @@
+2024-12-24 18:40:38,003 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 11:40:34.288509
+2024-12-24 18:40:38,003 - __main__ - INFO - Starting data extraction phase
+2024-12-24 18:40:38,003 - __main__ - INFO - Processing table: Orders
+2024-12-24 18:40:38,003 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-24 18:40:40,611 - src.extract.mysql_extractor - ERROR - Error extracting table Orders: Expected integer for max_id, got NoneType
+2024-12-24 18:40:40,611 - __main__ - ERROR - Failed processing table Orders: Expected integer for max_id, got NoneType
+2024-12-24 18:40:40,611 - __main__ - ERROR - Error in extraction phase: Expected integer for max_id, got NoneType
+2024-12-24 18:40:40,611 - __main__ - ERROR - Pipeline failed: Expected integer for max_id, got NoneType
+2024-12-24 18:40:40,611 - py4j.clientserver - INFO - Closing down clientserver connection

@@ -1,0 +1,791 @@
+2024-12-25 10:21:41,254 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-25 03:21:37.350414
+2024-12-25 10:21:41,254 - __main__ - INFO - Starting data extraction phase
+2024-12-25 10:21:41,254 - __main__ - INFO - Processing table: Orders
+2024-12-25 10:21:41,254 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-25 10:21:44,155 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 5,000
+Partitions: 4
+Duration: 2.51 seconds
+2024-12-25 10:21:44,266 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-25 10:21:45,826 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 5,000
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 1.50 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-25 10:21:45,826 - __main__ - INFO - Completed Orders: 5,000 records processed in 4.57 seconds
+2024-12-25 10:21:45,826 - __main__ - INFO - Processing table: Shipments
+2024-12-25 10:21:45,826 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-25 10:21:45,949 - src.extract.mysql_extractor - INFO - Completed extraction of Shipments:
+Records: 3,756
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:21:45,997 - src.load.datalake_loader - INFO - Starting raw zone load for Shipments
+2024-12-25 10:21:46,238 - src.load.datalake_loader - INFO - Completed raw zone load for Shipments:
+Records: 3,756
+Partitioning: partitioned by ['status']
+Duration: 0.20 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Shipments
+2024-12-25 10:21:46,238 - __main__ - INFO - Completed Shipments: 3,756 records processed in 0.41 seconds
+2024-12-25 10:21:46,238 - __main__ - INFO - Processing table: Payments
+2024-12-25 10:21:46,238 - src.extract.mysql_extractor - INFO - Starting extraction of table Payments
+2024-12-25 10:21:46,336 - src.extract.mysql_extractor - INFO - Completed extraction of Payments:
+Records: 5,000
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:21:46,410 - src.load.datalake_loader - INFO - Starting raw zone load for Payments
+2024-12-25 10:21:47,046 - src.load.datalake_loader - INFO - Completed raw zone load for Payments:
+Records: 5,000
+Partitioning: partitioned by ['payment_date_partition', 'payment_status']
+Duration: 0.60 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Payments
+2024-12-25 10:21:47,047 - __main__ - INFO - Completed Payments: 5,000 records processed in 0.81 seconds
+2024-12-25 10:21:47,047 - __main__ - INFO - Processing table: Notifications
+2024-12-25 10:21:47,047 - src.extract.mysql_extractor - INFO - Starting extraction of table Notifications
+2024-12-25 10:21:47,123 - src.extract.mysql_extractor - INFO - Completed extraction of Notifications:
+Records: 3,756
+Partitions: 4
+Duration: 0.03 seconds
+2024-12-25 10:21:47,166 - src.load.datalake_loader - INFO - Starting raw zone load for Notifications
+2024-12-25 10:21:47,800 - src.load.datalake_loader - INFO - Completed raw zone load for Notifications:
+Records: 3,756
+Partitioning: partitioned by ['notification_date_partition']
+Duration: 0.57 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Notifications
+2024-12-25 10:21:47,800 - __main__ - INFO - Completed Notifications: 3,756 records processed in 0.75 seconds
+2024-12-25 10:21:47,800 - __main__ - INFO - Processing table: Users
+2024-12-25 10:21:47,800 - src.extract.mysql_extractor - INFO - Starting extraction of table Users
+2024-12-25 10:21:47,883 - src.extract.mysql_extractor - INFO - Completed extraction of Users:
+Records: 1,000
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-25 10:21:47,934 - src.load.datalake_loader - INFO - Starting raw zone load for Users
+2024-12-25 10:21:48,069 - src.load.datalake_loader - INFO - Completed raw zone load for Users:
+Records: 1,000
+Partitioning: not partitioned
+Duration: 0.10 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Users
+2024-12-25 10:21:48,069 - __main__ - INFO - Completed Users: 1,000 records processed in 0.27 seconds
+2024-12-25 10:21:48,069 - __main__ - INFO - Processing table: Drivers
+2024-12-25 10:21:48,069 - src.extract.mysql_extractor - INFO - Starting extraction of table Drivers
+2024-12-25 10:21:48,125 - src.extract.mysql_extractor - INFO - Completed extraction of Drivers:
+Records: 200
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-25 10:21:48,175 - src.load.datalake_loader - INFO - Starting raw zone load for Drivers
+2024-12-25 10:21:48,289 - src.load.datalake_loader - INFO - Completed raw zone load for Drivers:
+Records: 200
+Partitioning: not partitioned
+Duration: 0.08 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Drivers
+2024-12-25 10:21:48,289 - __main__ - INFO - Completed Drivers: 200 records processed in 0.22 seconds
+2024-12-25 10:21:48,289 - __main__ - INFO - Data extraction phase completed in 7.04 seconds
+2024-12-25 10:21:48,290 - __main__ - INFO - Starting data transformation phase
+2024-12-25 10:21:48,290 - src.transform.transform_executor - INFO - Starting transformation process
+Timestamp: 2024-12-24 09:43:35
+User: thuanpony03
+2024-12-25 10:21:48,290 - src.transform.transform_executor - INFO - Starting dimension transformation at 2024-12-24 09:43:35
+2024-12-25 10:21:48,290 - src.transform.dimension_builder - INFO - Building date dimension from 2024-01-01 to 2024-12-31
+2024-12-25 10:21:49,080 - src.transform.dimension_builder - INFO - Successfully built date dimension with 366 rows
+2024-12-25 10:21:49,329 - src.transform.dimension_builder - INFO - Building user dimension
+2024-12-25 10:21:49,512 - src.transform.dimension_builder - INFO - Successfully built user dimension with 1000 rows
+2024-12-25 10:21:49,512 - src.transform.dimension_builder - INFO - Building driver dimension
+2024-12-25 10:21:49,803 - src.transform.dimension_builder - INFO - Successfully built driver dimension with 200 rows
+2024-12-25 10:21:49,814 - src.transform.dimension_builder - INFO - Building location dimension
+2024-12-25 10:21:51,761 - src.transform.dimension_builder - INFO - Successfully built location dimension with 13756 unique addresses
+2024-12-25 10:21:52,029 - src.transform.dimension_builder - INFO - Building payment method dimension
+2024-12-25 10:21:53,804 - src.transform.dimension_builder - INFO - Successfully built payment method dimension with 3 rows
+2024-12-25 10:21:56,559 - src.transform.transform_executor - INFO - Completed dimension transformation with counts:
+date: 366 rows
+user: 1000 rows
+driver: 200 rows
+location: 13756 rows
+payment_method: 3 rows
+2024-12-25 10:21:56,559 - src.transform.transform_executor - INFO - Starting fact transformation at 2024-12-24 09:43:35
+2024-12-25 10:21:56,677 - src.transform.fact_builder - INFO - Building orders fact table
+2024-12-25 10:21:58,318 - src.transform.fact_builder - INFO - Successfully built orders fact table with 5000 rows
+Time range: Row(min(order_created_at)=datetime.datetime(2024, 12, 24, 20, 0, 14), max(order_created_at)=datetime.datetime(2024, 12, 24, 20, 3, 16))
+2024-12-25 10:21:58,318 - src.transform.fact_builder - INFO - Building shipment tracking fact table
+2024-12-25 10:21:58,544 - src.transform.fact_builder - ERROR - Error building shipment tracking fact table: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `created_at` cannot be resolved. Did you mean one of the following? [`date_key`, `status`, `city`, `district`, `driver_id`].;
+'Project [monotonically_increasing_id() AS tracking_key#1830L, shipment_id#983, order_key#1516L, driver_key#733, date_key#1612, location_key#842, status#992, current_timestamp() AS tracking_timestamp#1831, CASE WHEN isnotnull(estimated_delivery_time#987) THEN round(((unix_timestamp(estimated_delivery_time#987, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false) - unix_timestamp('created_at, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false)) / 60), 0) ELSE null END AS elapsed_time_minutes#1832]
++- Join LeftOuter, (current_location#986 = full_address#827)
+   :- Join LeftOuter, (driver_id#985 = driver_id#557)
+   :  :- Project [order_id#984, shipment_id#983, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, date_key#1612, order_key#1516L]
+   :  :  +- Join LeftOuter, (order_id#984 = order_id#955)
+   :  :     :- Project [shipment_id#983, order_id#984, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, cast(date_format(estimated_delivery_time#987, yyyyMMdd, Some(Asia/Vientiane)) as int) AS date_key#1612]
+   :  :     :  +- Relation [shipment_id#983,order_id#984,driver_id#985,current_location#986,estimated_delivery_time#987,dl_ingestion_timestamp#988,dl_source_table#989,dl_batch_id#990,dl_process_date#991,status#992] parquet
+   :  :     +- Project [order_key#1516L, order_id#955]
+   :  :        +- Project [order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, order_amount#1517, delivery_duration_minutes#1479, order_status#1518, payment_status#1013, order_created_at#1519, order_completed_at#1520, 2024-12-24 09:39:09 AS etl_timestamp#1535, thuanpony03 AS etl_user#1536]
+   :  :           +- Project [monotonically_increasing_id() AS order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, amount#1005 AS order_amount#1517, delivery_duration_minutes#1479, status#968 AS order_status#1518, payment_status#1013, created_at#962 AS order_created_at#1519, delivery_time#961 AS order_completed_at#1520]
+   :  :              +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 12 more fields]
+   :  :                 +- Join LeftOuter, (payment_method#1014 = payment_method#876)
+   :  :                    :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 8 more fields]
+   :  :                    :  +- Join LeftOuter, (delivery_address#958 = full_address#1305)
+   :  :                    :     :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 6 more fields]
+   :  :                    :     :  +- Join LeftOuter, (pickup_address#957 = full_address#827)
+   :  :                    :     :     :- Join LeftOuter, (user_id#956 = user_id#532)
+   :  :                    :     :     :  :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 2 more fields]
+   :  :                    :     :     :  :  +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :     +- Join LeftOuter, (order_id#955 = order_id#1004)
+   :  :                    :     :     :  :        :- Relation [order_id#955,user_id#956,pickup_address#957,delivery_address#958,package_description#959,package_weight#960,delivery_time#961,created_at#962,dl_ingestion_timestamp#963,dl_source_table#964,dl_batch_id#965,dl_process_date#966,created_at_partition#967,status#968] parquet
+   :  :                    :     :     :  :        +- Project [payment_id#1003, order_id#1004, amount#1005, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, payment_method#1006, 13, true, false, true) AS payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :           +- Relation [payment_id#1003,order_id#1004,amount#1005,payment_method#1006,payment_date#1007,dl_ingestion_timestamp#1008,dl_source_table#1009,dl_batch_id#1010,dl_process_date#1011,payment_date_partition#1012,payment_status#1013] parquet
+   :  :                    :     :     :  +- Project [user_key#645, user_id#532]
+   :  :                    :     :     :     +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :  :                    :     :     :        +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :  :                    :     :     :           +- Window [row_number() windowspecdefinition(user_id#532 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#532 ASC NULLS FIRST]
+   :  :                    :     :     :              +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633]
+   :  :                    :     :     :                 +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, true AS is_active#631, coalesce(cast(created_at#539 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :  :                    :     :     :                    +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539]
+   :  :                    :     :     :                       +- Project [user_id#532, full_name#533, email#534, password_hash#535, phone_number#536, address#537, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#538, 6, true, false, true) AS role#544, created_at#539, dl_ingestion_timestamp#540, dl_source_table#541, dl_batch_id#542, dl_process_date#543]
+   :  :                    :     :     :                          +- Relation [user_id#532,full_name#533,email#534,password_hash#535,phone_number#536,address#537,role#538,created_at#539,dl_ingestion_timestamp#540,dl_source_table#541,dl_batch_id#542,dl_process_date#543] parquet
+   :  :                    :     :     +- SubqueryAlias pickup_loc
+   :  :                    :     :        +- Project [location_key#842, full_address#827]
+   :  :                    :     :           +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :     :              +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :     :                 +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+   :  :                    :     :                    +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :     :                       +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :     :                          +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :     :                             +- Deduplicate [full_address#827]
+   :  :                    :     :                                +- Project [trim(address#767, None) AS full_address#827]
+   :  :                    :     :                                   +- Union false, false
+   :  :                    :     :                                      :- Project [pickup_address#577 AS address#767]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#577, delivery_address#578]
+   :  :                    :     :                                      :     :  +- Relation [order_id#575,user_id#576,pickup_address#577,delivery_address#578,package_description#579,package_weight#580,delivery_time#581,created_at#582,dl_ingestion_timestamp#583,dl_source_table#584,dl_batch_id#585,dl_process_date#586,created_at_partition#587,status#588] parquet
+   :  :                    :     :                                      :     +- Project [current_location#606]
+   :  :                    :     :                                      :        +- Relation [shipment_id#603,order_id#604,driver_id#605,current_location#606,estimated_delivery_time#607,dl_ingestion_timestamp#608,dl_source_table#609,dl_batch_id#610,dl_process_date#611,status#612] parquet
+   :  :                    :     :                                      :- Project [delivery_address#774 AS address#769]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#773, delivery_address#774]
+   :  :                    :     :                                      :     :  +- Relation [order_id#771,user_id#772,pickup_address#773,delivery_address#774,package_description#775,package_weight#776,delivery_time#777,created_at#778,dl_ingestion_timestamp#779,dl_source_table#780,dl_batch_id#781,dl_process_date#782,created_at_partition#783,status#784] parquet
+   :  :                    :     :                                      :     +- Project [current_location#788]
+   :  :                    :     :                                      :        +- Relation [shipment_id#785,order_id#786,driver_id#787,current_location#788,estimated_delivery_time#789,dl_ingestion_timestamp#790,dl_source_table#791,dl_batch_id#792,dl_process_date#793,status#794] parquet
+   :  :                    :     :                                      +- Project [current_location#817 AS address#798]
+   :  :                    :     :                                         +- Join Cross
+   :  :                    :     :                                            :- Project [pickup_address#802, delivery_address#803]
+   :  :                    :     :                                            :  +- Relation [order_id#800,user_id#801,pickup_address#802,delivery_address#803,package_description#804,package_weight#805,delivery_time#806,created_at#807,dl_ingestion_timestamp#808,dl_source_table#809,dl_batch_id#810,dl_process_date#811,created_at_partition#812,status#813] parquet
+   :  :                    :     :                                            +- Project [current_location#817]
+   :  :                    :     :                                               +- Relation [shipment_id#814,order_id#815,driver_id#816,current_location#817,estimated_delivery_time#818,dl_ingestion_timestamp#819,dl_source_table#820,dl_batch_id#821,dl_process_date#822,status#823] parquet
+   :  :                    :     +- SubqueryAlias delivery_loc
+   :  :                    :        +- Project [location_key#842, full_address#1305]
+   :  :                    :           +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :              +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :                 +- Window [row_number() windowspecdefinition(full_address#1305 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#1305 ASC NULLS FIRST]
+   :  :                    :                    +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :                       +- Project [full_address#1305, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :                          +- Project [full_address#1305, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :                             +- Deduplicate [full_address#1305]
+   :  :                    :                                +- Project [trim(address#767, None) AS full_address#1305]
+   :  :                    :                                   +- Union false, false
+   :  :                    :                                      :- Project [pickup_address#1235 AS address#767]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1235, delivery_address#1236]
+   :  :                    :                                      :     :  +- Relation [order_id#1233,user_id#1234,pickup_address#1235,delivery_address#1236,package_description#1237,package_weight#1238,delivery_time#1239,created_at#1240,dl_ingestion_timestamp#1241,dl_source_table#1242,dl_batch_id#1243,dl_process_date#1244,created_at_partition#1245,status#1246] parquet
+   :  :                    :                                      :     +- Project [current_location#1250]
+   :  :                    :                                      :        +- Relation [shipment_id#1247,order_id#1248,driver_id#1249,current_location#1250,estimated_delivery_time#1251,dl_ingestion_timestamp#1252,dl_source_table#1253,dl_batch_id#1254,dl_process_date#1255,status#1256] parquet
+   :  :                    :                                      :- Project [delivery_address#1260 AS address#769]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1259, delivery_address#1260]
+   :  :                    :                                      :     :  +- Relation [order_id#1257,user_id#1258,pickup_address#1259,delivery_address#1260,package_description#1261,package_weight#1262,delivery_time#1263,created_at#1264,dl_ingestion_timestamp#1265,dl_source_table#1266,dl_batch_id#1267,dl_process_date#1268,created_at_partition#1269,status#1270] parquet
+   :  :                    :                                      :     +- Project [current_location#1274]
+   :  :                    :                                      :        +- Relation [shipment_id#1271,order_id#1272,driver_id#1273,current_location#1274,estimated_delivery_time#1275,dl_ingestion_timestamp#1276,dl_source_table#1277,dl_batch_id#1278,dl_process_date#1279,status#1280] parquet
+   :  :                    :                                      +- Project [current_location#1298 AS address#798]
+   :  :                    :                                         +- Join Cross
+   :  :                    :                                            :- Project [pickup_address#1283, delivery_address#1284]
+   :  :                    :                                            :  +- Relation [order_id#1281,user_id#1282,pickup_address#1283,delivery_address#1284,package_description#1285,package_weight#1286,delivery_time#1287,created_at#1288,dl_ingestion_timestamp#1289,dl_source_table#1290,dl_batch_id#1291,dl_process_date#1292,created_at_partition#1293,status#1294] parquet
+   :  :                    :                                            +- Project [current_location#1298]
+   :  :                    :                                               +- Relation [shipment_id#1295,order_id#1296,driver_id#1297,current_location#1298,estimated_delivery_time#1299,dl_ingestion_timestamp#1300,dl_source_table#1301,dl_batch_id#1302,dl_process_date#1303,status#1304] parquet
+   :  :                    +- LogicalRDD [payment_method_key#875, payment_method#876, payment_method_category#877], false
+   :  +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733]
+   :     +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733, driver_key#733]
+   :        +- Window [row_number() windowspecdefinition(driver_id#557 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS driver_key#733], [driver_id#557 ASC NULLS FIRST]
+   :           +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722]
+   :              +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, true AS is_active#720, current_date(Some(Asia/Vientiane)) AS effective_start_date#721, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#722]
+   :                 +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561]
+   :                    +- Join Inner, (user_id#558 = user_id#1639)
+   :                       :- Relation [driver_id#557,user_id#558,vehicle_license_plate#559,vehicle_type#560,vehicle_year#561,dl_ingestion_timestamp#562,dl_source_table#563,dl_batch_id#564,dl_process_date#565] parquet
+   :                       +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :                          +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :                             +- Window [row_number() windowspecdefinition(user_id#1639 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#1639 ASC NULLS FIRST]
+   :                                +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633]
+   :                                   +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, true AS is_active#631, coalesce(cast(created_at#1646 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :                                      +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646]
+   :                                         +- Project [user_id#1639, full_name#1640, email#1641, password_hash#1642, phone_number#1643, address#1644, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#1645, 6, true, false, true) AS role#544, created_at#1646, dl_ingestion_timestamp#1647, dl_source_table#1648, dl_batch_id#1649, dl_process_date#1650]
+   :                                            +- Relation [user_id#1639,full_name#1640,email#1641,password_hash#1642,phone_number#1643,address#1644,role#1645,created_at#1646,dl_ingestion_timestamp#1647,dl_source_table#1648,dl_batch_id#1649,dl_process_date#1650] parquet
+   +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+      +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+         +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+            +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+               +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+                  +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+                     +- Deduplicate [full_address#827]
+                        +- Project [trim(address#767, None) AS full_address#827]
+                           +- Union false, false
+                              :- Project [pickup_address#1698 AS address#767]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1698, delivery_address#1699]
+                              :     :  +- Relation [order_id#1696,user_id#1697,pickup_address#1698,delivery_address#1699,package_description#1700,package_weight#1701,delivery_time#1702,created_at#1703,dl_ingestion_timestamp#1704,dl_source_table#1705,dl_batch_id#1706,dl_process_date#1707,created_at_partition#1708,status#1709] parquet
+                              :     +- Project [current_location#1713]
+                              :        +- Relation [shipment_id#1710,order_id#1711,driver_id#1712,current_location#1713,estimated_delivery_time#1714,dl_ingestion_timestamp#1715,dl_source_table#1716,dl_batch_id#1717,dl_process_date#1718,status#1719] parquet
+                              :- Project [delivery_address#1723 AS address#769]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1722, delivery_address#1723]
+                              :     :  +- Relation [order_id#1720,user_id#1721,pickup_address#1722,delivery_address#1723,package_description#1724,package_weight#1725,delivery_time#1726,created_at#1727,dl_ingestion_timestamp#1728,dl_source_table#1729,dl_batch_id#1730,dl_process_date#1731,created_at_partition#1732,status#1733] parquet
+                              :     +- Project [current_location#1737]
+                              :        +- Relation [shipment_id#1734,order_id#1735,driver_id#1736,current_location#1737,estimated_delivery_time#1738,dl_ingestion_timestamp#1739,dl_source_table#1740,dl_batch_id#1741,dl_process_date#1742,status#1743] parquet
+                              +- Project [current_location#1761 AS address#798]
+                                 +- Join Cross
+                                    :- Project [pickup_address#1746, delivery_address#1747]
+                                    :  +- Relation [order_id#1744,user_id#1745,pickup_address#1746,delivery_address#1747,package_description#1748,package_weight#1749,delivery_time#1750,created_at#1751,dl_ingestion_timestamp#1752,dl_source_table#1753,dl_batch_id#1754,dl_process_date#1755,created_at_partition#1756,status#1757] parquet
+                                    +- Project [current_location#1761]
+                                       +- Relation [shipment_id#1758,order_id#1759,driver_id#1760,current_location#1761,estimated_delivery_time#1762,dl_ingestion_timestamp#1763,dl_source_table#1764,dl_batch_id#1765,dl_process_date#1766,status#1767] parquet
+
+2024-12-25 10:21:58,546 - src.transform.transform_executor - ERROR - Error in fact transformation: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `created_at` cannot be resolved. Did you mean one of the following? [`date_key`, `status`, `city`, `district`, `driver_id`].;
+'Project [monotonically_increasing_id() AS tracking_key#1830L, shipment_id#983, order_key#1516L, driver_key#733, date_key#1612, location_key#842, status#992, current_timestamp() AS tracking_timestamp#1831, CASE WHEN isnotnull(estimated_delivery_time#987) THEN round(((unix_timestamp(estimated_delivery_time#987, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false) - unix_timestamp('created_at, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false)) / 60), 0) ELSE null END AS elapsed_time_minutes#1832]
++- Join LeftOuter, (current_location#986 = full_address#827)
+   :- Join LeftOuter, (driver_id#985 = driver_id#557)
+   :  :- Project [order_id#984, shipment_id#983, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, date_key#1612, order_key#1516L]
+   :  :  +- Join LeftOuter, (order_id#984 = order_id#955)
+   :  :     :- Project [shipment_id#983, order_id#984, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, cast(date_format(estimated_delivery_time#987, yyyyMMdd, Some(Asia/Vientiane)) as int) AS date_key#1612]
+   :  :     :  +- Relation [shipment_id#983,order_id#984,driver_id#985,current_location#986,estimated_delivery_time#987,dl_ingestion_timestamp#988,dl_source_table#989,dl_batch_id#990,dl_process_date#991,status#992] parquet
+   :  :     +- Project [order_key#1516L, order_id#955]
+   :  :        +- Project [order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, order_amount#1517, delivery_duration_minutes#1479, order_status#1518, payment_status#1013, order_created_at#1519, order_completed_at#1520, 2024-12-24 09:39:09 AS etl_timestamp#1535, thuanpony03 AS etl_user#1536]
+   :  :           +- Project [monotonically_increasing_id() AS order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, amount#1005 AS order_amount#1517, delivery_duration_minutes#1479, status#968 AS order_status#1518, payment_status#1013, created_at#962 AS order_created_at#1519, delivery_time#961 AS order_completed_at#1520]
+   :  :              +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 12 more fields]
+   :  :                 +- Join LeftOuter, (payment_method#1014 = payment_method#876)
+   :  :                    :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 8 more fields]
+   :  :                    :  +- Join LeftOuter, (delivery_address#958 = full_address#1305)
+   :  :                    :     :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 6 more fields]
+   :  :                    :     :  +- Join LeftOuter, (pickup_address#957 = full_address#827)
+   :  :                    :     :     :- Join LeftOuter, (user_id#956 = user_id#532)
+   :  :                    :     :     :  :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 2 more fields]
+   :  :                    :     :     :  :  +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :     +- Join LeftOuter, (order_id#955 = order_id#1004)
+   :  :                    :     :     :  :        :- Relation [order_id#955,user_id#956,pickup_address#957,delivery_address#958,package_description#959,package_weight#960,delivery_time#961,created_at#962,dl_ingestion_timestamp#963,dl_source_table#964,dl_batch_id#965,dl_process_date#966,created_at_partition#967,status#968] parquet
+   :  :                    :     :     :  :        +- Project [payment_id#1003, order_id#1004, amount#1005, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, payment_method#1006, 13, true, false, true) AS payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :           +- Relation [payment_id#1003,order_id#1004,amount#1005,payment_method#1006,payment_date#1007,dl_ingestion_timestamp#1008,dl_source_table#1009,dl_batch_id#1010,dl_process_date#1011,payment_date_partition#1012,payment_status#1013] parquet
+   :  :                    :     :     :  +- Project [user_key#645, user_id#532]
+   :  :                    :     :     :     +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :  :                    :     :     :        +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :  :                    :     :     :           +- Window [row_number() windowspecdefinition(user_id#532 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#532 ASC NULLS FIRST]
+   :  :                    :     :     :              +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633]
+   :  :                    :     :     :                 +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, true AS is_active#631, coalesce(cast(created_at#539 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :  :                    :     :     :                    +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539]
+   :  :                    :     :     :                       +- Project [user_id#532, full_name#533, email#534, password_hash#535, phone_number#536, address#537, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#538, 6, true, false, true) AS role#544, created_at#539, dl_ingestion_timestamp#540, dl_source_table#541, dl_batch_id#542, dl_process_date#543]
+   :  :                    :     :     :                          +- Relation [user_id#532,full_name#533,email#534,password_hash#535,phone_number#536,address#537,role#538,created_at#539,dl_ingestion_timestamp#540,dl_source_table#541,dl_batch_id#542,dl_process_date#543] parquet
+   :  :                    :     :     +- SubqueryAlias pickup_loc
+   :  :                    :     :        +- Project [location_key#842, full_address#827]
+   :  :                    :     :           +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :     :              +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :     :                 +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+   :  :                    :     :                    +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :     :                       +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :     :                          +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :     :                             +- Deduplicate [full_address#827]
+   :  :                    :     :                                +- Project [trim(address#767, None) AS full_address#827]
+   :  :                    :     :                                   +- Union false, false
+   :  :                    :     :                                      :- Project [pickup_address#577 AS address#767]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#577, delivery_address#578]
+   :  :                    :     :                                      :     :  +- Relation [order_id#575,user_id#576,pickup_address#577,delivery_address#578,package_description#579,package_weight#580,delivery_time#581,created_at#582,dl_ingestion_timestamp#583,dl_source_table#584,dl_batch_id#585,dl_process_date#586,created_at_partition#587,status#588] parquet
+   :  :                    :     :                                      :     +- Project [current_location#606]
+   :  :                    :     :                                      :        +- Relation [shipment_id#603,order_id#604,driver_id#605,current_location#606,estimated_delivery_time#607,dl_ingestion_timestamp#608,dl_source_table#609,dl_batch_id#610,dl_process_date#611,status#612] parquet
+   :  :                    :     :                                      :- Project [delivery_address#774 AS address#769]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#773, delivery_address#774]
+   :  :                    :     :                                      :     :  +- Relation [order_id#771,user_id#772,pickup_address#773,delivery_address#774,package_description#775,package_weight#776,delivery_time#777,created_at#778,dl_ingestion_timestamp#779,dl_source_table#780,dl_batch_id#781,dl_process_date#782,created_at_partition#783,status#784] parquet
+   :  :                    :     :                                      :     +- Project [current_location#788]
+   :  :                    :     :                                      :        +- Relation [shipment_id#785,order_id#786,driver_id#787,current_location#788,estimated_delivery_time#789,dl_ingestion_timestamp#790,dl_source_table#791,dl_batch_id#792,dl_process_date#793,status#794] parquet
+   :  :                    :     :                                      +- Project [current_location#817 AS address#798]
+   :  :                    :     :                                         +- Join Cross
+   :  :                    :     :                                            :- Project [pickup_address#802, delivery_address#803]
+   :  :                    :     :                                            :  +- Relation [order_id#800,user_id#801,pickup_address#802,delivery_address#803,package_description#804,package_weight#805,delivery_time#806,created_at#807,dl_ingestion_timestamp#808,dl_source_table#809,dl_batch_id#810,dl_process_date#811,created_at_partition#812,status#813] parquet
+   :  :                    :     :                                            +- Project [current_location#817]
+   :  :                    :     :                                               +- Relation [shipment_id#814,order_id#815,driver_id#816,current_location#817,estimated_delivery_time#818,dl_ingestion_timestamp#819,dl_source_table#820,dl_batch_id#821,dl_process_date#822,status#823] parquet
+   :  :                    :     +- SubqueryAlias delivery_loc
+   :  :                    :        +- Project [location_key#842, full_address#1305]
+   :  :                    :           +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :              +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :                 +- Window [row_number() windowspecdefinition(full_address#1305 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#1305 ASC NULLS FIRST]
+   :  :                    :                    +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :                       +- Project [full_address#1305, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :                          +- Project [full_address#1305, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :                             +- Deduplicate [full_address#1305]
+   :  :                    :                                +- Project [trim(address#767, None) AS full_address#1305]
+   :  :                    :                                   +- Union false, false
+   :  :                    :                                      :- Project [pickup_address#1235 AS address#767]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1235, delivery_address#1236]
+   :  :                    :                                      :     :  +- Relation [order_id#1233,user_id#1234,pickup_address#1235,delivery_address#1236,package_description#1237,package_weight#1238,delivery_time#1239,created_at#1240,dl_ingestion_timestamp#1241,dl_source_table#1242,dl_batch_id#1243,dl_process_date#1244,created_at_partition#1245,status#1246] parquet
+   :  :                    :                                      :     +- Project [current_location#1250]
+   :  :                    :                                      :        +- Relation [shipment_id#1247,order_id#1248,driver_id#1249,current_location#1250,estimated_delivery_time#1251,dl_ingestion_timestamp#1252,dl_source_table#1253,dl_batch_id#1254,dl_process_date#1255,status#1256] parquet
+   :  :                    :                                      :- Project [delivery_address#1260 AS address#769]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1259, delivery_address#1260]
+   :  :                    :                                      :     :  +- Relation [order_id#1257,user_id#1258,pickup_address#1259,delivery_address#1260,package_description#1261,package_weight#1262,delivery_time#1263,created_at#1264,dl_ingestion_timestamp#1265,dl_source_table#1266,dl_batch_id#1267,dl_process_date#1268,created_at_partition#1269,status#1270] parquet
+   :  :                    :                                      :     +- Project [current_location#1274]
+   :  :                    :                                      :        +- Relation [shipment_id#1271,order_id#1272,driver_id#1273,current_location#1274,estimated_delivery_time#1275,dl_ingestion_timestamp#1276,dl_source_table#1277,dl_batch_id#1278,dl_process_date#1279,status#1280] parquet
+   :  :                    :                                      +- Project [current_location#1298 AS address#798]
+   :  :                    :                                         +- Join Cross
+   :  :                    :                                            :- Project [pickup_address#1283, delivery_address#1284]
+   :  :                    :                                            :  +- Relation [order_id#1281,user_id#1282,pickup_address#1283,delivery_address#1284,package_description#1285,package_weight#1286,delivery_time#1287,created_at#1288,dl_ingestion_timestamp#1289,dl_source_table#1290,dl_batch_id#1291,dl_process_date#1292,created_at_partition#1293,status#1294] parquet
+   :  :                    :                                            +- Project [current_location#1298]
+   :  :                    :                                               +- Relation [shipment_id#1295,order_id#1296,driver_id#1297,current_location#1298,estimated_delivery_time#1299,dl_ingestion_timestamp#1300,dl_source_table#1301,dl_batch_id#1302,dl_process_date#1303,status#1304] parquet
+   :  :                    +- LogicalRDD [payment_method_key#875, payment_method#876, payment_method_category#877], false
+   :  +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733]
+   :     +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733, driver_key#733]
+   :        +- Window [row_number() windowspecdefinition(driver_id#557 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS driver_key#733], [driver_id#557 ASC NULLS FIRST]
+   :           +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722]
+   :              +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, true AS is_active#720, current_date(Some(Asia/Vientiane)) AS effective_start_date#721, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#722]
+   :                 +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561]
+   :                    +- Join Inner, (user_id#558 = user_id#1639)
+   :                       :- Relation [driver_id#557,user_id#558,vehicle_license_plate#559,vehicle_type#560,vehicle_year#561,dl_ingestion_timestamp#562,dl_source_table#563,dl_batch_id#564,dl_process_date#565] parquet
+   :                       +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :                          +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :                             +- Window [row_number() windowspecdefinition(user_id#1639 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#1639 ASC NULLS FIRST]
+   :                                +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633]
+   :                                   +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, true AS is_active#631, coalesce(cast(created_at#1646 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :                                      +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646]
+   :                                         +- Project [user_id#1639, full_name#1640, email#1641, password_hash#1642, phone_number#1643, address#1644, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#1645, 6, true, false, true) AS role#544, created_at#1646, dl_ingestion_timestamp#1647, dl_source_table#1648, dl_batch_id#1649, dl_process_date#1650]
+   :                                            +- Relation [user_id#1639,full_name#1640,email#1641,password_hash#1642,phone_number#1643,address#1644,role#1645,created_at#1646,dl_ingestion_timestamp#1647,dl_source_table#1648,dl_batch_id#1649,dl_process_date#1650] parquet
+   +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+      +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+         +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+            +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+               +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+                  +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+                     +- Deduplicate [full_address#827]
+                        +- Project [trim(address#767, None) AS full_address#827]
+                           +- Union false, false
+                              :- Project [pickup_address#1698 AS address#767]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1698, delivery_address#1699]
+                              :     :  +- Relation [order_id#1696,user_id#1697,pickup_address#1698,delivery_address#1699,package_description#1700,package_weight#1701,delivery_time#1702,created_at#1703,dl_ingestion_timestamp#1704,dl_source_table#1705,dl_batch_id#1706,dl_process_date#1707,created_at_partition#1708,status#1709] parquet
+                              :     +- Project [current_location#1713]
+                              :        +- Relation [shipment_id#1710,order_id#1711,driver_id#1712,current_location#1713,estimated_delivery_time#1714,dl_ingestion_timestamp#1715,dl_source_table#1716,dl_batch_id#1717,dl_process_date#1718,status#1719] parquet
+                              :- Project [delivery_address#1723 AS address#769]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1722, delivery_address#1723]
+                              :     :  +- Relation [order_id#1720,user_id#1721,pickup_address#1722,delivery_address#1723,package_description#1724,package_weight#1725,delivery_time#1726,created_at#1727,dl_ingestion_timestamp#1728,dl_source_table#1729,dl_batch_id#1730,dl_process_date#1731,created_at_partition#1732,status#1733] parquet
+                              :     +- Project [current_location#1737]
+                              :        +- Relation [shipment_id#1734,order_id#1735,driver_id#1736,current_location#1737,estimated_delivery_time#1738,dl_ingestion_timestamp#1739,dl_source_table#1740,dl_batch_id#1741,dl_process_date#1742,status#1743] parquet
+                              +- Project [current_location#1761 AS address#798]
+                                 +- Join Cross
+                                    :- Project [pickup_address#1746, delivery_address#1747]
+                                    :  +- Relation [order_id#1744,user_id#1745,pickup_address#1746,delivery_address#1747,package_description#1748,package_weight#1749,delivery_time#1750,created_at#1751,dl_ingestion_timestamp#1752,dl_source_table#1753,dl_batch_id#1754,dl_process_date#1755,created_at_partition#1756,status#1757] parquet
+                                    +- Project [current_location#1761]
+                                       +- Relation [shipment_id#1758,order_id#1759,driver_id#1760,current_location#1761,estimated_delivery_time#1762,dl_ingestion_timestamp#1763,dl_source_table#1764,dl_batch_id#1765,dl_process_date#1766,status#1767] parquet
+
+2024-12-25 10:21:58,549 - src.transform.transform_executor - ERROR - Transform process failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `created_at` cannot be resolved. Did you mean one of the following? [`date_key`, `status`, `city`, `district`, `driver_id`].;
+'Project [monotonically_increasing_id() AS tracking_key#1830L, shipment_id#983, order_key#1516L, driver_key#733, date_key#1612, location_key#842, status#992, current_timestamp() AS tracking_timestamp#1831, CASE WHEN isnotnull(estimated_delivery_time#987) THEN round(((unix_timestamp(estimated_delivery_time#987, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false) - unix_timestamp('created_at, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false)) / 60), 0) ELSE null END AS elapsed_time_minutes#1832]
++- Join LeftOuter, (current_location#986 = full_address#827)
+   :- Join LeftOuter, (driver_id#985 = driver_id#557)
+   :  :- Project [order_id#984, shipment_id#983, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, date_key#1612, order_key#1516L]
+   :  :  +- Join LeftOuter, (order_id#984 = order_id#955)
+   :  :     :- Project [shipment_id#983, order_id#984, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, cast(date_format(estimated_delivery_time#987, yyyyMMdd, Some(Asia/Vientiane)) as int) AS date_key#1612]
+   :  :     :  +- Relation [shipment_id#983,order_id#984,driver_id#985,current_location#986,estimated_delivery_time#987,dl_ingestion_timestamp#988,dl_source_table#989,dl_batch_id#990,dl_process_date#991,status#992] parquet
+   :  :     +- Project [order_key#1516L, order_id#955]
+   :  :        +- Project [order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, order_amount#1517, delivery_duration_minutes#1479, order_status#1518, payment_status#1013, order_created_at#1519, order_completed_at#1520, 2024-12-24 09:39:09 AS etl_timestamp#1535, thuanpony03 AS etl_user#1536]
+   :  :           +- Project [monotonically_increasing_id() AS order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, amount#1005 AS order_amount#1517, delivery_duration_minutes#1479, status#968 AS order_status#1518, payment_status#1013, created_at#962 AS order_created_at#1519, delivery_time#961 AS order_completed_at#1520]
+   :  :              +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 12 more fields]
+   :  :                 +- Join LeftOuter, (payment_method#1014 = payment_method#876)
+   :  :                    :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 8 more fields]
+   :  :                    :  +- Join LeftOuter, (delivery_address#958 = full_address#1305)
+   :  :                    :     :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 6 more fields]
+   :  :                    :     :  +- Join LeftOuter, (pickup_address#957 = full_address#827)
+   :  :                    :     :     :- Join LeftOuter, (user_id#956 = user_id#532)
+   :  :                    :     :     :  :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 2 more fields]
+   :  :                    :     :     :  :  +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :     +- Join LeftOuter, (order_id#955 = order_id#1004)
+   :  :                    :     :     :  :        :- Relation [order_id#955,user_id#956,pickup_address#957,delivery_address#958,package_description#959,package_weight#960,delivery_time#961,created_at#962,dl_ingestion_timestamp#963,dl_source_table#964,dl_batch_id#965,dl_process_date#966,created_at_partition#967,status#968] parquet
+   :  :                    :     :     :  :        +- Project [payment_id#1003, order_id#1004, amount#1005, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, payment_method#1006, 13, true, false, true) AS payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :           +- Relation [payment_id#1003,order_id#1004,amount#1005,payment_method#1006,payment_date#1007,dl_ingestion_timestamp#1008,dl_source_table#1009,dl_batch_id#1010,dl_process_date#1011,payment_date_partition#1012,payment_status#1013] parquet
+   :  :                    :     :     :  +- Project [user_key#645, user_id#532]
+   :  :                    :     :     :     +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :  :                    :     :     :        +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :  :                    :     :     :           +- Window [row_number() windowspecdefinition(user_id#532 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#532 ASC NULLS FIRST]
+   :  :                    :     :     :              +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633]
+   :  :                    :     :     :                 +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, true AS is_active#631, coalesce(cast(created_at#539 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :  :                    :     :     :                    +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539]
+   :  :                    :     :     :                       +- Project [user_id#532, full_name#533, email#534, password_hash#535, phone_number#536, address#537, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#538, 6, true, false, true) AS role#544, created_at#539, dl_ingestion_timestamp#540, dl_source_table#541, dl_batch_id#542, dl_process_date#543]
+   :  :                    :     :     :                          +- Relation [user_id#532,full_name#533,email#534,password_hash#535,phone_number#536,address#537,role#538,created_at#539,dl_ingestion_timestamp#540,dl_source_table#541,dl_batch_id#542,dl_process_date#543] parquet
+   :  :                    :     :     +- SubqueryAlias pickup_loc
+   :  :                    :     :        +- Project [location_key#842, full_address#827]
+   :  :                    :     :           +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :     :              +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :     :                 +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+   :  :                    :     :                    +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :     :                       +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :     :                          +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :     :                             +- Deduplicate [full_address#827]
+   :  :                    :     :                                +- Project [trim(address#767, None) AS full_address#827]
+   :  :                    :     :                                   +- Union false, false
+   :  :                    :     :                                      :- Project [pickup_address#577 AS address#767]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#577, delivery_address#578]
+   :  :                    :     :                                      :     :  +- Relation [order_id#575,user_id#576,pickup_address#577,delivery_address#578,package_description#579,package_weight#580,delivery_time#581,created_at#582,dl_ingestion_timestamp#583,dl_source_table#584,dl_batch_id#585,dl_process_date#586,created_at_partition#587,status#588] parquet
+   :  :                    :     :                                      :     +- Project [current_location#606]
+   :  :                    :     :                                      :        +- Relation [shipment_id#603,order_id#604,driver_id#605,current_location#606,estimated_delivery_time#607,dl_ingestion_timestamp#608,dl_source_table#609,dl_batch_id#610,dl_process_date#611,status#612] parquet
+   :  :                    :     :                                      :- Project [delivery_address#774 AS address#769]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#773, delivery_address#774]
+   :  :                    :     :                                      :     :  +- Relation [order_id#771,user_id#772,pickup_address#773,delivery_address#774,package_description#775,package_weight#776,delivery_time#777,created_at#778,dl_ingestion_timestamp#779,dl_source_table#780,dl_batch_id#781,dl_process_date#782,created_at_partition#783,status#784] parquet
+   :  :                    :     :                                      :     +- Project [current_location#788]
+   :  :                    :     :                                      :        +- Relation [shipment_id#785,order_id#786,driver_id#787,current_location#788,estimated_delivery_time#789,dl_ingestion_timestamp#790,dl_source_table#791,dl_batch_id#792,dl_process_date#793,status#794] parquet
+   :  :                    :     :                                      +- Project [current_location#817 AS address#798]
+   :  :                    :     :                                         +- Join Cross
+   :  :                    :     :                                            :- Project [pickup_address#802, delivery_address#803]
+   :  :                    :     :                                            :  +- Relation [order_id#800,user_id#801,pickup_address#802,delivery_address#803,package_description#804,package_weight#805,delivery_time#806,created_at#807,dl_ingestion_timestamp#808,dl_source_table#809,dl_batch_id#810,dl_process_date#811,created_at_partition#812,status#813] parquet
+   :  :                    :     :                                            +- Project [current_location#817]
+   :  :                    :     :                                               +- Relation [shipment_id#814,order_id#815,driver_id#816,current_location#817,estimated_delivery_time#818,dl_ingestion_timestamp#819,dl_source_table#820,dl_batch_id#821,dl_process_date#822,status#823] parquet
+   :  :                    :     +- SubqueryAlias delivery_loc
+   :  :                    :        +- Project [location_key#842, full_address#1305]
+   :  :                    :           +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :              +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :                 +- Window [row_number() windowspecdefinition(full_address#1305 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#1305 ASC NULLS FIRST]
+   :  :                    :                    +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :                       +- Project [full_address#1305, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :                          +- Project [full_address#1305, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :                             +- Deduplicate [full_address#1305]
+   :  :                    :                                +- Project [trim(address#767, None) AS full_address#1305]
+   :  :                    :                                   +- Union false, false
+   :  :                    :                                      :- Project [pickup_address#1235 AS address#767]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1235, delivery_address#1236]
+   :  :                    :                                      :     :  +- Relation [order_id#1233,user_id#1234,pickup_address#1235,delivery_address#1236,package_description#1237,package_weight#1238,delivery_time#1239,created_at#1240,dl_ingestion_timestamp#1241,dl_source_table#1242,dl_batch_id#1243,dl_process_date#1244,created_at_partition#1245,status#1246] parquet
+   :  :                    :                                      :     +- Project [current_location#1250]
+   :  :                    :                                      :        +- Relation [shipment_id#1247,order_id#1248,driver_id#1249,current_location#1250,estimated_delivery_time#1251,dl_ingestion_timestamp#1252,dl_source_table#1253,dl_batch_id#1254,dl_process_date#1255,status#1256] parquet
+   :  :                    :                                      :- Project [delivery_address#1260 AS address#769]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1259, delivery_address#1260]
+   :  :                    :                                      :     :  +- Relation [order_id#1257,user_id#1258,pickup_address#1259,delivery_address#1260,package_description#1261,package_weight#1262,delivery_time#1263,created_at#1264,dl_ingestion_timestamp#1265,dl_source_table#1266,dl_batch_id#1267,dl_process_date#1268,created_at_partition#1269,status#1270] parquet
+   :  :                    :                                      :     +- Project [current_location#1274]
+   :  :                    :                                      :        +- Relation [shipment_id#1271,order_id#1272,driver_id#1273,current_location#1274,estimated_delivery_time#1275,dl_ingestion_timestamp#1276,dl_source_table#1277,dl_batch_id#1278,dl_process_date#1279,status#1280] parquet
+   :  :                    :                                      +- Project [current_location#1298 AS address#798]
+   :  :                    :                                         +- Join Cross
+   :  :                    :                                            :- Project [pickup_address#1283, delivery_address#1284]
+   :  :                    :                                            :  +- Relation [order_id#1281,user_id#1282,pickup_address#1283,delivery_address#1284,package_description#1285,package_weight#1286,delivery_time#1287,created_at#1288,dl_ingestion_timestamp#1289,dl_source_table#1290,dl_batch_id#1291,dl_process_date#1292,created_at_partition#1293,status#1294] parquet
+   :  :                    :                                            +- Project [current_location#1298]
+   :  :                    :                                               +- Relation [shipment_id#1295,order_id#1296,driver_id#1297,current_location#1298,estimated_delivery_time#1299,dl_ingestion_timestamp#1300,dl_source_table#1301,dl_batch_id#1302,dl_process_date#1303,status#1304] parquet
+   :  :                    +- LogicalRDD [payment_method_key#875, payment_method#876, payment_method_category#877], false
+   :  +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733]
+   :     +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733, driver_key#733]
+   :        +- Window [row_number() windowspecdefinition(driver_id#557 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS driver_key#733], [driver_id#557 ASC NULLS FIRST]
+   :           +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722]
+   :              +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, true AS is_active#720, current_date(Some(Asia/Vientiane)) AS effective_start_date#721, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#722]
+   :                 +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561]
+   :                    +- Join Inner, (user_id#558 = user_id#1639)
+   :                       :- Relation [driver_id#557,user_id#558,vehicle_license_plate#559,vehicle_type#560,vehicle_year#561,dl_ingestion_timestamp#562,dl_source_table#563,dl_batch_id#564,dl_process_date#565] parquet
+   :                       +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :                          +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :                             +- Window [row_number() windowspecdefinition(user_id#1639 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#1639 ASC NULLS FIRST]
+   :                                +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633]
+   :                                   +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, true AS is_active#631, coalesce(cast(created_at#1646 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :                                      +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646]
+   :                                         +- Project [user_id#1639, full_name#1640, email#1641, password_hash#1642, phone_number#1643, address#1644, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#1645, 6, true, false, true) AS role#544, created_at#1646, dl_ingestion_timestamp#1647, dl_source_table#1648, dl_batch_id#1649, dl_process_date#1650]
+   :                                            +- Relation [user_id#1639,full_name#1640,email#1641,password_hash#1642,phone_number#1643,address#1644,role#1645,created_at#1646,dl_ingestion_timestamp#1647,dl_source_table#1648,dl_batch_id#1649,dl_process_date#1650] parquet
+   +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+      +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+         +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+            +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+               +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+                  +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+                     +- Deduplicate [full_address#827]
+                        +- Project [trim(address#767, None) AS full_address#827]
+                           +- Union false, false
+                              :- Project [pickup_address#1698 AS address#767]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1698, delivery_address#1699]
+                              :     :  +- Relation [order_id#1696,user_id#1697,pickup_address#1698,delivery_address#1699,package_description#1700,package_weight#1701,delivery_time#1702,created_at#1703,dl_ingestion_timestamp#1704,dl_source_table#1705,dl_batch_id#1706,dl_process_date#1707,created_at_partition#1708,status#1709] parquet
+                              :     +- Project [current_location#1713]
+                              :        +- Relation [shipment_id#1710,order_id#1711,driver_id#1712,current_location#1713,estimated_delivery_time#1714,dl_ingestion_timestamp#1715,dl_source_table#1716,dl_batch_id#1717,dl_process_date#1718,status#1719] parquet
+                              :- Project [delivery_address#1723 AS address#769]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1722, delivery_address#1723]
+                              :     :  +- Relation [order_id#1720,user_id#1721,pickup_address#1722,delivery_address#1723,package_description#1724,package_weight#1725,delivery_time#1726,created_at#1727,dl_ingestion_timestamp#1728,dl_source_table#1729,dl_batch_id#1730,dl_process_date#1731,created_at_partition#1732,status#1733] parquet
+                              :     +- Project [current_location#1737]
+                              :        +- Relation [shipment_id#1734,order_id#1735,driver_id#1736,current_location#1737,estimated_delivery_time#1738,dl_ingestion_timestamp#1739,dl_source_table#1740,dl_batch_id#1741,dl_process_date#1742,status#1743] parquet
+                              +- Project [current_location#1761 AS address#798]
+                                 +- Join Cross
+                                    :- Project [pickup_address#1746, delivery_address#1747]
+                                    :  +- Relation [order_id#1744,user_id#1745,pickup_address#1746,delivery_address#1747,package_description#1748,package_weight#1749,delivery_time#1750,created_at#1751,dl_ingestion_timestamp#1752,dl_source_table#1753,dl_batch_id#1754,dl_process_date#1755,created_at_partition#1756,status#1757] parquet
+                                    +- Project [current_location#1761]
+                                       +- Relation [shipment_id#1758,order_id#1759,driver_id#1760,current_location#1761,estimated_delivery_time#1762,dl_ingestion_timestamp#1763,dl_source_table#1764,dl_batch_id#1765,dl_process_date#1766,status#1767] parquet
+
+2024-12-25 10:21:58,553 - __main__ - ERROR - Error in transformation phase: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `created_at` cannot be resolved. Did you mean one of the following? [`date_key`, `status`, `city`, `district`, `driver_id`].;
+'Project [monotonically_increasing_id() AS tracking_key#1830L, shipment_id#983, order_key#1516L, driver_key#733, date_key#1612, location_key#842, status#992, current_timestamp() AS tracking_timestamp#1831, CASE WHEN isnotnull(estimated_delivery_time#987) THEN round(((unix_timestamp(estimated_delivery_time#987, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false) - unix_timestamp('created_at, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false)) / 60), 0) ELSE null END AS elapsed_time_minutes#1832]
++- Join LeftOuter, (current_location#986 = full_address#827)
+   :- Join LeftOuter, (driver_id#985 = driver_id#557)
+   :  :- Project [order_id#984, shipment_id#983, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, date_key#1612, order_key#1516L]
+   :  :  +- Join LeftOuter, (order_id#984 = order_id#955)
+   :  :     :- Project [shipment_id#983, order_id#984, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, cast(date_format(estimated_delivery_time#987, yyyyMMdd, Some(Asia/Vientiane)) as int) AS date_key#1612]
+   :  :     :  +- Relation [shipment_id#983,order_id#984,driver_id#985,current_location#986,estimated_delivery_time#987,dl_ingestion_timestamp#988,dl_source_table#989,dl_batch_id#990,dl_process_date#991,status#992] parquet
+   :  :     +- Project [order_key#1516L, order_id#955]
+   :  :        +- Project [order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, order_amount#1517, delivery_duration_minutes#1479, order_status#1518, payment_status#1013, order_created_at#1519, order_completed_at#1520, 2024-12-24 09:39:09 AS etl_timestamp#1535, thuanpony03 AS etl_user#1536]
+   :  :           +- Project [monotonically_increasing_id() AS order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, amount#1005 AS order_amount#1517, delivery_duration_minutes#1479, status#968 AS order_status#1518, payment_status#1013, created_at#962 AS order_created_at#1519, delivery_time#961 AS order_completed_at#1520]
+   :  :              +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 12 more fields]
+   :  :                 +- Join LeftOuter, (payment_method#1014 = payment_method#876)
+   :  :                    :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 8 more fields]
+   :  :                    :  +- Join LeftOuter, (delivery_address#958 = full_address#1305)
+   :  :                    :     :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 6 more fields]
+   :  :                    :     :  +- Join LeftOuter, (pickup_address#957 = full_address#827)
+   :  :                    :     :     :- Join LeftOuter, (user_id#956 = user_id#532)
+   :  :                    :     :     :  :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 2 more fields]
+   :  :                    :     :     :  :  +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :     +- Join LeftOuter, (order_id#955 = order_id#1004)
+   :  :                    :     :     :  :        :- Relation [order_id#955,user_id#956,pickup_address#957,delivery_address#958,package_description#959,package_weight#960,delivery_time#961,created_at#962,dl_ingestion_timestamp#963,dl_source_table#964,dl_batch_id#965,dl_process_date#966,created_at_partition#967,status#968] parquet
+   :  :                    :     :     :  :        +- Project [payment_id#1003, order_id#1004, amount#1005, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, payment_method#1006, 13, true, false, true) AS payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :           +- Relation [payment_id#1003,order_id#1004,amount#1005,payment_method#1006,payment_date#1007,dl_ingestion_timestamp#1008,dl_source_table#1009,dl_batch_id#1010,dl_process_date#1011,payment_date_partition#1012,payment_status#1013] parquet
+   :  :                    :     :     :  +- Project [user_key#645, user_id#532]
+   :  :                    :     :     :     +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :  :                    :     :     :        +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :  :                    :     :     :           +- Window [row_number() windowspecdefinition(user_id#532 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#532 ASC NULLS FIRST]
+   :  :                    :     :     :              +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633]
+   :  :                    :     :     :                 +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, true AS is_active#631, coalesce(cast(created_at#539 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :  :                    :     :     :                    +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539]
+   :  :                    :     :     :                       +- Project [user_id#532, full_name#533, email#534, password_hash#535, phone_number#536, address#537, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#538, 6, true, false, true) AS role#544, created_at#539, dl_ingestion_timestamp#540, dl_source_table#541, dl_batch_id#542, dl_process_date#543]
+   :  :                    :     :     :                          +- Relation [user_id#532,full_name#533,email#534,password_hash#535,phone_number#536,address#537,role#538,created_at#539,dl_ingestion_timestamp#540,dl_source_table#541,dl_batch_id#542,dl_process_date#543] parquet
+   :  :                    :     :     +- SubqueryAlias pickup_loc
+   :  :                    :     :        +- Project [location_key#842, full_address#827]
+   :  :                    :     :           +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :     :              +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :     :                 +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+   :  :                    :     :                    +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :     :                       +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :     :                          +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :     :                             +- Deduplicate [full_address#827]
+   :  :                    :     :                                +- Project [trim(address#767, None) AS full_address#827]
+   :  :                    :     :                                   +- Union false, false
+   :  :                    :     :                                      :- Project [pickup_address#577 AS address#767]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#577, delivery_address#578]
+   :  :                    :     :                                      :     :  +- Relation [order_id#575,user_id#576,pickup_address#577,delivery_address#578,package_description#579,package_weight#580,delivery_time#581,created_at#582,dl_ingestion_timestamp#583,dl_source_table#584,dl_batch_id#585,dl_process_date#586,created_at_partition#587,status#588] parquet
+   :  :                    :     :                                      :     +- Project [current_location#606]
+   :  :                    :     :                                      :        +- Relation [shipment_id#603,order_id#604,driver_id#605,current_location#606,estimated_delivery_time#607,dl_ingestion_timestamp#608,dl_source_table#609,dl_batch_id#610,dl_process_date#611,status#612] parquet
+   :  :                    :     :                                      :- Project [delivery_address#774 AS address#769]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#773, delivery_address#774]
+   :  :                    :     :                                      :     :  +- Relation [order_id#771,user_id#772,pickup_address#773,delivery_address#774,package_description#775,package_weight#776,delivery_time#777,created_at#778,dl_ingestion_timestamp#779,dl_source_table#780,dl_batch_id#781,dl_process_date#782,created_at_partition#783,status#784] parquet
+   :  :                    :     :                                      :     +- Project [current_location#788]
+   :  :                    :     :                                      :        +- Relation [shipment_id#785,order_id#786,driver_id#787,current_location#788,estimated_delivery_time#789,dl_ingestion_timestamp#790,dl_source_table#791,dl_batch_id#792,dl_process_date#793,status#794] parquet
+   :  :                    :     :                                      +- Project [current_location#817 AS address#798]
+   :  :                    :     :                                         +- Join Cross
+   :  :                    :     :                                            :- Project [pickup_address#802, delivery_address#803]
+   :  :                    :     :                                            :  +- Relation [order_id#800,user_id#801,pickup_address#802,delivery_address#803,package_description#804,package_weight#805,delivery_time#806,created_at#807,dl_ingestion_timestamp#808,dl_source_table#809,dl_batch_id#810,dl_process_date#811,created_at_partition#812,status#813] parquet
+   :  :                    :     :                                            +- Project [current_location#817]
+   :  :                    :     :                                               +- Relation [shipment_id#814,order_id#815,driver_id#816,current_location#817,estimated_delivery_time#818,dl_ingestion_timestamp#819,dl_source_table#820,dl_batch_id#821,dl_process_date#822,status#823] parquet
+   :  :                    :     +- SubqueryAlias delivery_loc
+   :  :                    :        +- Project [location_key#842, full_address#1305]
+   :  :                    :           +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :              +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :                 +- Window [row_number() windowspecdefinition(full_address#1305 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#1305 ASC NULLS FIRST]
+   :  :                    :                    +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :                       +- Project [full_address#1305, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :                          +- Project [full_address#1305, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :                             +- Deduplicate [full_address#1305]
+   :  :                    :                                +- Project [trim(address#767, None) AS full_address#1305]
+   :  :                    :                                   +- Union false, false
+   :  :                    :                                      :- Project [pickup_address#1235 AS address#767]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1235, delivery_address#1236]
+   :  :                    :                                      :     :  +- Relation [order_id#1233,user_id#1234,pickup_address#1235,delivery_address#1236,package_description#1237,package_weight#1238,delivery_time#1239,created_at#1240,dl_ingestion_timestamp#1241,dl_source_table#1242,dl_batch_id#1243,dl_process_date#1244,created_at_partition#1245,status#1246] parquet
+   :  :                    :                                      :     +- Project [current_location#1250]
+   :  :                    :                                      :        +- Relation [shipment_id#1247,order_id#1248,driver_id#1249,current_location#1250,estimated_delivery_time#1251,dl_ingestion_timestamp#1252,dl_source_table#1253,dl_batch_id#1254,dl_process_date#1255,status#1256] parquet
+   :  :                    :                                      :- Project [delivery_address#1260 AS address#769]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1259, delivery_address#1260]
+   :  :                    :                                      :     :  +- Relation [order_id#1257,user_id#1258,pickup_address#1259,delivery_address#1260,package_description#1261,package_weight#1262,delivery_time#1263,created_at#1264,dl_ingestion_timestamp#1265,dl_source_table#1266,dl_batch_id#1267,dl_process_date#1268,created_at_partition#1269,status#1270] parquet
+   :  :                    :                                      :     +- Project [current_location#1274]
+   :  :                    :                                      :        +- Relation [shipment_id#1271,order_id#1272,driver_id#1273,current_location#1274,estimated_delivery_time#1275,dl_ingestion_timestamp#1276,dl_source_table#1277,dl_batch_id#1278,dl_process_date#1279,status#1280] parquet
+   :  :                    :                                      +- Project [current_location#1298 AS address#798]
+   :  :                    :                                         +- Join Cross
+   :  :                    :                                            :- Project [pickup_address#1283, delivery_address#1284]
+   :  :                    :                                            :  +- Relation [order_id#1281,user_id#1282,pickup_address#1283,delivery_address#1284,package_description#1285,package_weight#1286,delivery_time#1287,created_at#1288,dl_ingestion_timestamp#1289,dl_source_table#1290,dl_batch_id#1291,dl_process_date#1292,created_at_partition#1293,status#1294] parquet
+   :  :                    :                                            +- Project [current_location#1298]
+   :  :                    :                                               +- Relation [shipment_id#1295,order_id#1296,driver_id#1297,current_location#1298,estimated_delivery_time#1299,dl_ingestion_timestamp#1300,dl_source_table#1301,dl_batch_id#1302,dl_process_date#1303,status#1304] parquet
+   :  :                    +- LogicalRDD [payment_method_key#875, payment_method#876, payment_method_category#877], false
+   :  +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733]
+   :     +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733, driver_key#733]
+   :        +- Window [row_number() windowspecdefinition(driver_id#557 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS driver_key#733], [driver_id#557 ASC NULLS FIRST]
+   :           +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722]
+   :              +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, true AS is_active#720, current_date(Some(Asia/Vientiane)) AS effective_start_date#721, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#722]
+   :                 +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561]
+   :                    +- Join Inner, (user_id#558 = user_id#1639)
+   :                       :- Relation [driver_id#557,user_id#558,vehicle_license_plate#559,vehicle_type#560,vehicle_year#561,dl_ingestion_timestamp#562,dl_source_table#563,dl_batch_id#564,dl_process_date#565] parquet
+   :                       +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :                          +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :                             +- Window [row_number() windowspecdefinition(user_id#1639 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#1639 ASC NULLS FIRST]
+   :                                +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633]
+   :                                   +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, true AS is_active#631, coalesce(cast(created_at#1646 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :                                      +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646]
+   :                                         +- Project [user_id#1639, full_name#1640, email#1641, password_hash#1642, phone_number#1643, address#1644, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#1645, 6, true, false, true) AS role#544, created_at#1646, dl_ingestion_timestamp#1647, dl_source_table#1648, dl_batch_id#1649, dl_process_date#1650]
+   :                                            +- Relation [user_id#1639,full_name#1640,email#1641,password_hash#1642,phone_number#1643,address#1644,role#1645,created_at#1646,dl_ingestion_timestamp#1647,dl_source_table#1648,dl_batch_id#1649,dl_process_date#1650] parquet
+   +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+      +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+         +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+            +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+               +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+                  +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+                     +- Deduplicate [full_address#827]
+                        +- Project [trim(address#767, None) AS full_address#827]
+                           +- Union false, false
+                              :- Project [pickup_address#1698 AS address#767]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1698, delivery_address#1699]
+                              :     :  +- Relation [order_id#1696,user_id#1697,pickup_address#1698,delivery_address#1699,package_description#1700,package_weight#1701,delivery_time#1702,created_at#1703,dl_ingestion_timestamp#1704,dl_source_table#1705,dl_batch_id#1706,dl_process_date#1707,created_at_partition#1708,status#1709] parquet
+                              :     +- Project [current_location#1713]
+                              :        +- Relation [shipment_id#1710,order_id#1711,driver_id#1712,current_location#1713,estimated_delivery_time#1714,dl_ingestion_timestamp#1715,dl_source_table#1716,dl_batch_id#1717,dl_process_date#1718,status#1719] parquet
+                              :- Project [delivery_address#1723 AS address#769]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1722, delivery_address#1723]
+                              :     :  +- Relation [order_id#1720,user_id#1721,pickup_address#1722,delivery_address#1723,package_description#1724,package_weight#1725,delivery_time#1726,created_at#1727,dl_ingestion_timestamp#1728,dl_source_table#1729,dl_batch_id#1730,dl_process_date#1731,created_at_partition#1732,status#1733] parquet
+                              :     +- Project [current_location#1737]
+                              :        +- Relation [shipment_id#1734,order_id#1735,driver_id#1736,current_location#1737,estimated_delivery_time#1738,dl_ingestion_timestamp#1739,dl_source_table#1740,dl_batch_id#1741,dl_process_date#1742,status#1743] parquet
+                              +- Project [current_location#1761 AS address#798]
+                                 +- Join Cross
+                                    :- Project [pickup_address#1746, delivery_address#1747]
+                                    :  +- Relation [order_id#1744,user_id#1745,pickup_address#1746,delivery_address#1747,package_description#1748,package_weight#1749,delivery_time#1750,created_at#1751,dl_ingestion_timestamp#1752,dl_source_table#1753,dl_batch_id#1754,dl_process_date#1755,created_at_partition#1756,status#1757] parquet
+                                    +- Project [current_location#1761]
+                                       +- Relation [shipment_id#1758,order_id#1759,driver_id#1760,current_location#1761,estimated_delivery_time#1762,dl_ingestion_timestamp#1763,dl_source_table#1764,dl_batch_id#1765,dl_process_date#1766,status#1767] parquet
+
+2024-12-25 10:21:58,554 - __main__ - ERROR - Pipeline failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `created_at` cannot be resolved. Did you mean one of the following? [`date_key`, `status`, `city`, `district`, `driver_id`].;
+'Project [monotonically_increasing_id() AS tracking_key#1830L, shipment_id#983, order_key#1516L, driver_key#733, date_key#1612, location_key#842, status#992, current_timestamp() AS tracking_timestamp#1831, CASE WHEN isnotnull(estimated_delivery_time#987) THEN round(((unix_timestamp(estimated_delivery_time#987, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false) - unix_timestamp('created_at, yyyy-MM-dd HH:mm:ss, Some(Asia/Vientiane), false)) / 60), 0) ELSE null END AS elapsed_time_minutes#1832]
++- Join LeftOuter, (current_location#986 = full_address#827)
+   :- Join LeftOuter, (driver_id#985 = driver_id#557)
+   :  :- Project [order_id#984, shipment_id#983, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, date_key#1612, order_key#1516L]
+   :  :  +- Join LeftOuter, (order_id#984 = order_id#955)
+   :  :     :- Project [shipment_id#983, order_id#984, driver_id#985, current_location#986, estimated_delivery_time#987, dl_ingestion_timestamp#988, dl_source_table#989, dl_batch_id#990, dl_process_date#991, status#992, cast(date_format(estimated_delivery_time#987, yyyyMMdd, Some(Asia/Vientiane)) as int) AS date_key#1612]
+   :  :     :  +- Relation [shipment_id#983,order_id#984,driver_id#985,current_location#986,estimated_delivery_time#987,dl_ingestion_timestamp#988,dl_source_table#989,dl_batch_id#990,dl_process_date#991,status#992] parquet
+   :  :     +- Project [order_key#1516L, order_id#955]
+   :  :        +- Project [order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, order_amount#1517, delivery_duration_minutes#1479, order_status#1518, payment_status#1013, order_created_at#1519, order_completed_at#1520, 2024-12-24 09:39:09 AS etl_timestamp#1535, thuanpony03 AS etl_user#1536]
+   :  :           +- Project [monotonically_increasing_id() AS order_key#1516L, order_id#955, user_key#645, order_date_key#1052, pickup_location_key#1200, delivery_location_key#1376, payment_method_key#875, package_weight#960, amount#1005 AS order_amount#1517, delivery_duration_minutes#1479, status#968 AS order_status#1518, payment_status#1013, created_at#962 AS order_created_at#1519, delivery_time#961 AS order_completed_at#1520]
+   :  :              +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 12 more fields]
+   :  :                 +- Join LeftOuter, (payment_method#1014 = payment_method#876)
+   :  :                    :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 8 more fields]
+   :  :                    :  +- Join LeftOuter, (delivery_address#958 = full_address#1305)
+   :  :                    :     :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 6 more fields]
+   :  :                    :     :  +- Join LeftOuter, (pickup_address#957 = full_address#827)
+   :  :                    :     :     :- Join LeftOuter, (user_id#956 = user_id#532)
+   :  :                    :     :     :  :- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013, ... 2 more fields]
+   :  :                    :     :     :  :  +- Project [order_id#955, user_id#956, pickup_address#957, delivery_address#958, package_description#959, package_weight#960, delivery_time#961, created_at#962, dl_ingestion_timestamp#963, dl_source_table#964, dl_batch_id#965, dl_process_date#966, created_at_partition#967, status#968, payment_id#1003, amount#1005, payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :     +- Join LeftOuter, (order_id#955 = order_id#1004)
+   :  :                    :     :     :  :        :- Relation [order_id#955,user_id#956,pickup_address#957,delivery_address#958,package_description#959,package_weight#960,delivery_time#961,created_at#962,dl_ingestion_timestamp#963,dl_source_table#964,dl_batch_id#965,dl_process_date#966,created_at_partition#967,status#968] parquet
+   :  :                    :     :     :  :        +- Project [payment_id#1003, order_id#1004, amount#1005, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, payment_method#1006, 13, true, false, true) AS payment_method#1014, payment_date#1007, dl_ingestion_timestamp#1008, dl_source_table#1009, dl_batch_id#1010, dl_process_date#1011, payment_date_partition#1012, payment_status#1013]
+   :  :                    :     :     :  :           +- Relation [payment_id#1003,order_id#1004,amount#1005,payment_method#1006,payment_date#1007,dl_ingestion_timestamp#1008,dl_source_table#1009,dl_batch_id#1010,dl_process_date#1011,payment_date_partition#1012,payment_status#1013] parquet
+   :  :                    :     :     :  +- Project [user_key#645, user_id#532]
+   :  :                    :     :     :     +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :  :                    :     :     :        +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :  :                    :     :     :           +- Window [row_number() windowspecdefinition(user_id#532 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#532 ASC NULLS FIRST]
+   :  :                    :     :     :              +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, is_active#631, effective_start_date#632, effective_end_date#633]
+   :  :                    :     :     :                 +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539, true AS is_active#631, coalesce(cast(created_at#539 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :  :                    :     :     :                    +- Project [user_id#532, full_name#533, email#534, phone_number#536, address#537, role#544, created_at#539]
+   :  :                    :     :     :                       +- Project [user_id#532, full_name#533, email#534, password_hash#535, phone_number#536, address#537, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#538, 6, true, false, true) AS role#544, created_at#539, dl_ingestion_timestamp#540, dl_source_table#541, dl_batch_id#542, dl_process_date#543]
+   :  :                    :     :     :                          +- Relation [user_id#532,full_name#533,email#534,password_hash#535,phone_number#536,address#537,role#538,created_at#539,dl_ingestion_timestamp#540,dl_source_table#541,dl_batch_id#542,dl_process_date#543] parquet
+   :  :                    :     :     +- SubqueryAlias pickup_loc
+   :  :                    :     :        +- Project [location_key#842, full_address#827]
+   :  :                    :     :           +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :     :              +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :     :                 +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+   :  :                    :     :                    +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :     :                       +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :     :                          +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :     :                             +- Deduplicate [full_address#827]
+   :  :                    :     :                                +- Project [trim(address#767, None) AS full_address#827]
+   :  :                    :     :                                   +- Union false, false
+   :  :                    :     :                                      :- Project [pickup_address#577 AS address#767]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#577, delivery_address#578]
+   :  :                    :     :                                      :     :  +- Relation [order_id#575,user_id#576,pickup_address#577,delivery_address#578,package_description#579,package_weight#580,delivery_time#581,created_at#582,dl_ingestion_timestamp#583,dl_source_table#584,dl_batch_id#585,dl_process_date#586,created_at_partition#587,status#588] parquet
+   :  :                    :     :                                      :     +- Project [current_location#606]
+   :  :                    :     :                                      :        +- Relation [shipment_id#603,order_id#604,driver_id#605,current_location#606,estimated_delivery_time#607,dl_ingestion_timestamp#608,dl_source_table#609,dl_batch_id#610,dl_process_date#611,status#612] parquet
+   :  :                    :     :                                      :- Project [delivery_address#774 AS address#769]
+   :  :                    :     :                                      :  +- Join Cross
+   :  :                    :     :                                      :     :- Project [pickup_address#773, delivery_address#774]
+   :  :                    :     :                                      :     :  +- Relation [order_id#771,user_id#772,pickup_address#773,delivery_address#774,package_description#775,package_weight#776,delivery_time#777,created_at#778,dl_ingestion_timestamp#779,dl_source_table#780,dl_batch_id#781,dl_process_date#782,created_at_partition#783,status#784] parquet
+   :  :                    :     :                                      :     +- Project [current_location#788]
+   :  :                    :     :                                      :        +- Relation [shipment_id#785,order_id#786,driver_id#787,current_location#788,estimated_delivery_time#789,dl_ingestion_timestamp#790,dl_source_table#791,dl_batch_id#792,dl_process_date#793,status#794] parquet
+   :  :                    :     :                                      +- Project [current_location#817 AS address#798]
+   :  :                    :     :                                         +- Join Cross
+   :  :                    :     :                                            :- Project [pickup_address#802, delivery_address#803]
+   :  :                    :     :                                            :  +- Relation [order_id#800,user_id#801,pickup_address#802,delivery_address#803,package_description#804,package_weight#805,delivery_time#806,created_at#807,dl_ingestion_timestamp#808,dl_source_table#809,dl_batch_id#810,dl_process_date#811,created_at_partition#812,status#813] parquet
+   :  :                    :     :                                            +- Project [current_location#817]
+   :  :                    :     :                                               +- Relation [shipment_id#814,order_id#815,driver_id#816,current_location#817,estimated_delivery_time#818,dl_ingestion_timestamp#819,dl_source_table#820,dl_batch_id#821,dl_process_date#822,status#823] parquet
+   :  :                    :     +- SubqueryAlias delivery_loc
+   :  :                    :        +- Project [location_key#842, full_address#1305]
+   :  :                    :           +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+   :  :                    :              +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+   :  :                    :                 +- Window [row_number() windowspecdefinition(full_address#1305 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#1305 ASC NULLS FIRST]
+   :  :                    :                    +- Project [full_address#1305, city#829, district#830, effective_start_date#834, effective_end_date#835]
+   :  :                    :                       +- Project [full_address#1305, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+   :  :                    :                          +- Project [full_address#1305, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#1305, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+   :  :                    :                             +- Deduplicate [full_address#1305]
+   :  :                    :                                +- Project [trim(address#767, None) AS full_address#1305]
+   :  :                    :                                   +- Union false, false
+   :  :                    :                                      :- Project [pickup_address#1235 AS address#767]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1235, delivery_address#1236]
+   :  :                    :                                      :     :  +- Relation [order_id#1233,user_id#1234,pickup_address#1235,delivery_address#1236,package_description#1237,package_weight#1238,delivery_time#1239,created_at#1240,dl_ingestion_timestamp#1241,dl_source_table#1242,dl_batch_id#1243,dl_process_date#1244,created_at_partition#1245,status#1246] parquet
+   :  :                    :                                      :     +- Project [current_location#1250]
+   :  :                    :                                      :        +- Relation [shipment_id#1247,order_id#1248,driver_id#1249,current_location#1250,estimated_delivery_time#1251,dl_ingestion_timestamp#1252,dl_source_table#1253,dl_batch_id#1254,dl_process_date#1255,status#1256] parquet
+   :  :                    :                                      :- Project [delivery_address#1260 AS address#769]
+   :  :                    :                                      :  +- Join Cross
+   :  :                    :                                      :     :- Project [pickup_address#1259, delivery_address#1260]
+   :  :                    :                                      :     :  +- Relation [order_id#1257,user_id#1258,pickup_address#1259,delivery_address#1260,package_description#1261,package_weight#1262,delivery_time#1263,created_at#1264,dl_ingestion_timestamp#1265,dl_source_table#1266,dl_batch_id#1267,dl_process_date#1268,created_at_partition#1269,status#1270] parquet
+   :  :                    :                                      :     +- Project [current_location#1274]
+   :  :                    :                                      :        +- Relation [shipment_id#1271,order_id#1272,driver_id#1273,current_location#1274,estimated_delivery_time#1275,dl_ingestion_timestamp#1276,dl_source_table#1277,dl_batch_id#1278,dl_process_date#1279,status#1280] parquet
+   :  :                    :                                      +- Project [current_location#1298 AS address#798]
+   :  :                    :                                         +- Join Cross
+   :  :                    :                                            :- Project [pickup_address#1283, delivery_address#1284]
+   :  :                    :                                            :  +- Relation [order_id#1281,user_id#1282,pickup_address#1283,delivery_address#1284,package_description#1285,package_weight#1286,delivery_time#1287,created_at#1288,dl_ingestion_timestamp#1289,dl_source_table#1290,dl_batch_id#1291,dl_process_date#1292,created_at_partition#1293,status#1294] parquet
+   :  :                    :                                            +- Project [current_location#1298]
+   :  :                    :                                               +- Relation [shipment_id#1295,order_id#1296,driver_id#1297,current_location#1298,estimated_delivery_time#1299,dl_ingestion_timestamp#1300,dl_source_table#1301,dl_batch_id#1302,dl_process_date#1303,status#1304] parquet
+   :  :                    +- LogicalRDD [payment_method_key#875, payment_method#876, payment_method_category#877], false
+   :  +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733]
+   :     +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722, driver_key#733, driver_key#733]
+   :        +- Window [row_number() windowspecdefinition(driver_id#557 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS driver_key#733], [driver_id#557 ASC NULLS FIRST]
+   :           +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, is_active#720, effective_start_date#721, effective_end_date#722]
+   :              +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561, true AS is_active#720, current_date(Some(Asia/Vientiane)) AS effective_start_date#721, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#722]
+   :                 +- Project [driver_id#557, user_key#645, full_name#1640, vehicle_license_plate#559, vehicle_type#560, vehicle_year#561]
+   :                    +- Join Inner, (user_id#558 = user_id#1639)
+   :                       :- Relation [driver_id#557,user_id#558,vehicle_license_plate#559,vehicle_type#560,vehicle_year#561,dl_ingestion_timestamp#562,dl_source_table#563,dl_batch_id#564,dl_process_date#565] parquet
+   :                       +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645]
+   :                          +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633, user_key#645, user_key#645]
+   :                             +- Window [row_number() windowspecdefinition(user_id#1639 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS user_key#645], [user_id#1639 ASC NULLS FIRST]
+   :                                +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, is_active#631, effective_start_date#632, effective_end_date#633]
+   :                                   +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646, true AS is_active#631, coalesce(cast(created_at#1646 as date), current_date(Some(Asia/Vientiane))) AS effective_start_date#632, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#633]
+   :                                      +- Project [user_id#1639, full_name#1640, email#1641, phone_number#1643, address#1644, role#544, created_at#1646]
+   :                                         +- Project [user_id#1639, full_name#1640, email#1641, password_hash#1642, phone_number#1643, address#1644, staticinvoke(class org.apache.spark.sql.catalyst.util.CharVarcharCodegenUtils, StringType, readSidePadding, role#1645, 6, true, false, true) AS role#544, created_at#1646, dl_ingestion_timestamp#1647, dl_source_table#1648, dl_batch_id#1649, dl_process_date#1650]
+   :                                            +- Relation [user_id#1639,full_name#1640,email#1641,password_hash#1642,phone_number#1643,address#1644,role#1645,created_at#1646,dl_ingestion_timestamp#1647,dl_source_table#1648,dl_batch_id#1649,dl_process_date#1650] parquet
+   +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842]
+      +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835, location_key#842, location_key#842]
+         +- Window [row_number() windowspecdefinition(full_address#827 ASC NULLS FIRST, specifiedwindowframe(RowFrame, unboundedpreceding$(), currentrow$())) AS location_key#842], [full_address#827 ASC NULLS FIRST]
+            +- Project [full_address#827, city#829, district#830, effective_start_date#834, effective_end_date#835]
+               +- Project [full_address#827, city#829, district#830, current_date(Some(Asia/Vientiane)) AS effective_start_date#834, to_date(9999-12-31, None, Some(Asia/Vientiane), false) AS effective_end_date#835]
+                  +- Project [full_address#827, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+$), 1) ELSE cast(null as string) END AS city#829, CASE WHEN NOT (regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) = ) THEN regexp_extract(full_address#827, (?i)(?:,\s*)([^,]+)(?:,\s*[^,]+,), 1) ELSE cast(null as string) END AS district#830]
+                     +- Deduplicate [full_address#827]
+                        +- Project [trim(address#767, None) AS full_address#827]
+                           +- Union false, false
+                              :- Project [pickup_address#1698 AS address#767]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1698, delivery_address#1699]
+                              :     :  +- Relation [order_id#1696,user_id#1697,pickup_address#1698,delivery_address#1699,package_description#1700,package_weight#1701,delivery_time#1702,created_at#1703,dl_ingestion_timestamp#1704,dl_source_table#1705,dl_batch_id#1706,dl_process_date#1707,created_at_partition#1708,status#1709] parquet
+                              :     +- Project [current_location#1713]
+                              :        +- Relation [shipment_id#1710,order_id#1711,driver_id#1712,current_location#1713,estimated_delivery_time#1714,dl_ingestion_timestamp#1715,dl_source_table#1716,dl_batch_id#1717,dl_process_date#1718,status#1719] parquet
+                              :- Project [delivery_address#1723 AS address#769]
+                              :  +- Join Cross
+                              :     :- Project [pickup_address#1722, delivery_address#1723]
+                              :     :  +- Relation [order_id#1720,user_id#1721,pickup_address#1722,delivery_address#1723,package_description#1724,package_weight#1725,delivery_time#1726,created_at#1727,dl_ingestion_timestamp#1728,dl_source_table#1729,dl_batch_id#1730,dl_process_date#1731,created_at_partition#1732,status#1733] parquet
+                              :     +- Project [current_location#1737]
+                              :        +- Relation [shipment_id#1734,order_id#1735,driver_id#1736,current_location#1737,estimated_delivery_time#1738,dl_ingestion_timestamp#1739,dl_source_table#1740,dl_batch_id#1741,dl_process_date#1742,status#1743] parquet
+                              +- Project [current_location#1761 AS address#798]
+                                 +- Join Cross
+                                    :- Project [pickup_address#1746, delivery_address#1747]
+                                    :  +- Relation [order_id#1744,user_id#1745,pickup_address#1746,delivery_address#1747,package_description#1748,package_weight#1749,delivery_time#1750,created_at#1751,dl_ingestion_timestamp#1752,dl_source_table#1753,dl_batch_id#1754,dl_process_date#1755,created_at_partition#1756,status#1757] parquet
+                                    +- Project [current_location#1761]
+                                       +- Relation [shipment_id#1758,order_id#1759,driver_id#1760,current_location#1761,estimated_delivery_time#1762,dl_ingestion_timestamp#1763,dl_source_table#1764,dl_batch_id#1765,dl_process_date#1766,status#1767] parquet
+
+2024-12-25 10:21:58,556 - py4j.clientserver - INFO - Closing down clientserver connection

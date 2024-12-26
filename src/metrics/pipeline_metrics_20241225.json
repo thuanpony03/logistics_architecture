@@ -1,0 +1,110 @@
+extraction_metrics:
+  Drivers:
+    duration_seconds: 0.09619522094726562
+    partition_count: 1
+    record_count: 200
+  Notifications:
+    duration_seconds: 0.1235799789428711
+    partition_count: 4
+    record_count: 3756
+  Orders:
+    duration_seconds: 2.7827446460723877
+    partition_count: 4
+    record_count: 5000
+  Payments:
+    duration_seconds: 0.17113852500915527
+    partition_count: 4
+    record_count: 5000
+  Shipments:
+    duration_seconds: 0.18955230712890625
+    partition_count: 4
+    record_count: 3756
+  Users:
+    duration_seconds: 0.0892786979675293
+    partition_count: 1
+    record_count: 1000
+load_metrics:
+  Drivers:
+    duration_seconds: 0.12846803665161133
+    record_count: 200
+    write_partitions: null
+  Notifications:
+    duration_seconds: 0.2030956745147705
+    record_count: 3756
+    write_partitions:
+    - notification_date
+  Orders:
+    duration_seconds: 1.195556402206421
+    record_count: 5000
+    write_partitions:
+    - created_at
+    - status
+  Payments:
+    duration_seconds: 0.23513460159301758
+    record_count: 5000
+    write_partitions:
+    - payment_date
+    - payment_status
+  Shipments:
+    duration_seconds: 0.24480676651000977
+    record_count: 3756
+    write_partitions:
+    - status
+  Users:
+    duration_seconds: 0.11916279792785645
+    record_count: 1000
+    write_partitions: null
+pipeline_info:
+  duration_seconds: 69.352296
+  end_time: 2024-12-25 03:59:43.806919
+  environment: development
+  start_time: 2024-12-25 03:58:34.454623
+  user: ponydasierra
+transformation_metrics:
+  dimension_metrics:
+    date:
+      row_count: 366
+      validation:
+        duplicate_keys: 0
+        has_key_column: true
+        null_keys: 0
+    driver:
+      row_count: 200
+      validation:
+        duplicate_keys: 0
+        has_key_column: true
+        null_keys: 0
+    location:
+      row_count: 13756
+      validation:
+        duplicate_keys: 0
+        has_key_column: true
+        null_keys: 0
+    payment_method:
+      row_count: 3
+      validation:
+        duplicate_keys: 0
+        has_key_column: true
+        null_keys: 0
+    user:
+      row_count: 1000
+      validation:
+        duplicate_keys: 0
+        has_key_column: true
+        null_keys: 0
+  errors: []
+  execution_context:
+    duration_seconds: 65740.0
+    timestamp: '2024-12-24 09:43:35'
+    user: thuanpony03
+  fact_metrics:
+    orders:
+      row_count: 5000
+      validation:
+        null_keys: 3296
+        orphaned_records: 0
+    shipment_tracking:
+      row_count: 3756
+      validation:
+        null_keys: 0
+        orphaned_records: 0

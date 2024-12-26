@@ -1,0 +1,15 @@
+2024-12-24 15:17:51,041 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 08:17:47.282768
+2024-12-24 15:17:51,041 - __main__ - INFO - Starting data extraction phase
+2024-12-24 15:17:51,041 - __main__ - INFO - Processing table: Orders
+2024-12-24 15:17:51,041 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-24 15:17:53,944 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 5,168
+Partitions: 4
+Duration: 2.52 seconds
+2024-12-24 15:17:54,015 - __main__ - ERROR - Failed processing table Orders: 'str' object is not callable
+2024-12-24 15:17:54,015 - __main__ - ERROR - Error in extraction phase: 'str' object is not callable
+2024-12-24 15:17:54,015 - __main__ - ERROR - Pipeline failed: 'str' object is not callable
+2024-12-24 15:17:54,016 - py4j.clientserver - INFO - Closing down clientserver connection

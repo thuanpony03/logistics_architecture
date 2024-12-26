@@ -1,0 +1,129 @@
+# Base MySQL Configuration
+mysql_source:
+  host: localhost
+  port: 3306
+  database: db_logistics
+  user: root
+  password: ponydasierra
+  batch_size: 100000  # Default batch size for large tables
+# Table-specific configurations
+  tables:
+    # High-volume/transactional tables
+    - name: Orders
+      partition_column: order_id  # For reading from MySQL
+      incremental_column: created_at
+      write_partitions:  # For writing to data lake
+        - created_at
+        - status
+
+    - name: Shipments
+      partition_column: shipment_id
+      write_partitions:
+        - status
+
+    - name: Payments
+      partition_column: payment_id
+      incremental_column: payment_date
+      write_partitions:
+        - payment_date
+        - payment_status
+
+    - name: Notifications
+      partition_column: notification_id
+      incremental_column: notification_date
+      write_partitions:
+        - notification_date
+
+    # Lookup/dimension tables (no partitioning needed)
+    - name: Users
+      partition_column: null
+      incremental_column: created_at
+      write_partitions: null
+
+    - name: Drivers
+      partition_column: null
+      incremental_column: null
+      write_partitions: null
+
+
+# Warehouse Configuration
+warehouse:
+  host: localhost
+  port: 3306
+  database: dw_logistics
+  user: root
+  password: ponydasierra
+  batch_size: 100000  # Default batch size for large tables
+
+
+# Data Lake Configuration
+datalake:
+  base_path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake
+  zones:
+    raw: raw  # Raw data from source
+    staging: staging  # Temporary transformation area
+    processed: processed  # Final processed data
+
+  # Data retention settings
+  retention:
+    raw: 30  # Days to keep raw data
+    staging: 7  # Days to keep staging data
+    processed: 90  # Days to keep processed data
+
+# Spark Configuration
+spark:
+  app_name: "Logistics Data Pipeline"
+  master: "local[*]"
+  driver_memory: "4g"
+  executor_memory: "4g"
+  config:
+    # Memory and Resource Management
+    "spark.memory.fraction": "0.8"
+    "spark.memory.storageFraction": "0.3"
+    "spark.default.parallelism": "200"
+    "spark.sql.shuffle.partitions": "200"
+
+    # Adaptive Query Execution
+    "spark.sql.adaptive.enabled": "true"
+    "spark.sql.adaptive.coalescePartitions.enabled": "true"
+    "spark.sql.adaptive.coalescePartitions.minPartitionNum": "8"
+    "spark.sql.adaptive.advisoryPartitionSizeInBytes": "134217728"  # 128MB
+
+    # Performance Optimization
+    "spark.sql.files.maxPartitionBytes": "134217728"  # 128MB
+    "spark.sql.files.openCostInBytes": "134217728"  # 128MB
+    "spark.hadoop.fs.defaultFS": "hdfs://localhost:9000"
+
+    # Compression and File Format
+    "spark.sql.parquet.compression.codec": "snappy"
+
+    # MySQL Connector
+    "spark.jars.packages": "mysql:mysql-connector-java:8.0.28"
+
+# Logging Configuration
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  file:
+    path: "logs/pipeline_{timestamp}.log"
+    max_size: "100MB"
+    backup_count: 5
+
+# Pipeline Metrics
+metrics:
+  enabled: true
+  collection_interval: 60  # seconds
+  save_path: "metrics/pipeline_metrics_{date}.json"
+
+# User Information
+user:
+  name: "thuanpony03"
+  environment: "development"
+  created_at: "2024-12-24 07:22:02"
+
+# Resource Limits
+limits:
+  max_concurrent_reads: 4
+  max_concurrent_writes: 4
+  max_retry_attempts: 3
+  timeout_seconds: 3600  # 1 hour

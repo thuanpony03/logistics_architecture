@@ -1,0 +1,38 @@
+2024-12-24 18:59:58,708 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 11:59:55.144246
+2024-12-24 18:59:58,709 - __main__ - INFO - Starting data extraction phase
+2024-12-24 18:59:58,709 - __main__ - INFO - Processing table: Orders
+2024-12-24 18:59:58,709 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-24 19:00:01,750 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 1,500
+Partitions: 4
+Duration: 2.66 seconds
+2024-12-24 19:00:01,852 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-24 19:00:02,930 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 1,500
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 1.02 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-24 19:00:02,930 - __main__ - INFO - Completed Orders: 1,500 records processed in 4.22 seconds
+2024-12-24 19:00:02,930 - __main__ - INFO - Processing table: Shipments
+2024-12-24 19:00:02,930 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-24 19:00:03,048 - src.extract.mysql_extractor - INFO - Completed extraction of Shipments:
+Records: 990
+Partitions: 4
+Duration: 0.05 seconds
+2024-12-24 19:00:03,110 - src.load.datalake_loader - INFO - Starting raw zone load for Shipments
+2024-12-24 19:00:03,335 - src.load.datalake_loader - INFO - Completed raw zone load for Shipments:
+Records: 990
+Partitioning: partitioned by ['status']
+Duration: 0.18 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Shipments
+2024-12-24 19:00:03,335 - __main__ - INFO - Completed Shipments: 990 records processed in 0.40 seconds
+2024-12-24 19:00:03,335 - __main__ - INFO - Processing table: Payments
+2024-12-24 19:00:03,335 - src.extract.mysql_extractor - INFO - Starting extraction of table Payments
+2024-12-24 19:00:03,365 - src.extract.mysql_extractor - ERROR - Error extracting table Payments: Expected integer for max_id, got NoneType
+2024-12-24 19:00:03,366 - __main__ - ERROR - Failed processing table Payments: Expected integer for max_id, got NoneType
+2024-12-24 19:00:03,366 - __main__ - ERROR - Error in extraction phase: Expected integer for max_id, got NoneType
+2024-12-24 19:00:03,366 - __main__ - ERROR - Pipeline failed: Expected integer for max_id, got NoneType
+2024-12-24 19:00:03,366 - py4j.clientserver - INFO - Closing down clientserver connection

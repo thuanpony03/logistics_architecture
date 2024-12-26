@@ -1,0 +1,152 @@
+2024-12-24 17:02:12,484 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-24 10:02:08.615888
+2024-12-24 17:02:12,484 - __main__ - INFO - Starting data extraction phase
+2024-12-24 17:02:12,484 - __main__ - INFO - Processing table: Orders
+2024-12-24 17:02:12,484 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-24 17:02:15,488 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 5,168
+Partitions: 4
+Duration: 2.62 seconds
+2024-12-24 17:02:15,597 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-24 17:02:16,733 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 5,168
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 1.07 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-24 17:02:16,733 - __main__ - INFO - Completed Orders: 5,168 records processed in 4.25 seconds
+2024-12-24 17:02:16,733 - __main__ - INFO - Processing table: Shipments
+2024-12-24 17:02:16,733 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-24 17:02:16,863 - src.extract.mysql_extractor - INFO - Completed extraction of Shipments:
+Records: 3,459
+Partitions: 4
+Duration: 0.05 seconds
+2024-12-24 17:02:16,912 - src.load.datalake_loader - INFO - Starting raw zone load for Shipments
+2024-12-24 17:02:17,164 - src.load.datalake_loader - INFO - Completed raw zone load for Shipments:
+Records: 3,459
+Partitioning: partitioned by ['status']
+Duration: 0.20 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Shipments
+2024-12-24 17:02:17,164 - __main__ - INFO - Completed Shipments: 3,459 records processed in 0.43 seconds
+2024-12-24 17:02:17,164 - __main__ - INFO - Processing table: Payments
+2024-12-24 17:02:17,164 - src.extract.mysql_extractor - INFO - Starting extraction of table Payments
+2024-12-24 17:02:17,268 - src.extract.mysql_extractor - INFO - Completed extraction of Payments:
+Records: 5,168
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-24 17:02:17,325 - src.load.datalake_loader - INFO - Starting raw zone load for Payments
+2024-12-24 17:02:18,034 - src.load.datalake_loader - INFO - Completed raw zone load for Payments:
+Records: 5,168
+Partitioning: partitioned by ['payment_date_partition', 'payment_status']
+Duration: 0.65 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Payments
+2024-12-24 17:02:18,035 - __main__ - INFO - Completed Payments: 5,168 records processed in 0.87 seconds
+2024-12-24 17:02:18,035 - __main__ - INFO - Processing table: Notifications
+2024-12-24 17:02:18,035 - src.extract.mysql_extractor - INFO - Starting extraction of table Notifications
+2024-12-24 17:02:18,118 - src.extract.mysql_extractor - INFO - Completed extraction of Notifications:
+Records: 9,182
+Partitions: 4
+Duration: 0.03 seconds
+2024-12-24 17:02:18,164 - src.load.datalake_loader - INFO - Starting raw zone load for Notifications
+2024-12-24 17:02:18,829 - src.load.datalake_loader - INFO - Completed raw zone load for Notifications:
+Records: 9,182
+Partitioning: partitioned by ['notification_date_partition']
+Duration: 0.60 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Notifications
+2024-12-24 17:02:18,829 - __main__ - INFO - Completed Notifications: 9,182 records processed in 0.79 seconds
+2024-12-24 17:02:18,829 - __main__ - INFO - Processing table: Users
+2024-12-24 17:02:18,829 - src.extract.mysql_extractor - INFO - Starting extraction of table Users
+2024-12-24 17:02:18,910 - src.extract.mysql_extractor - INFO - Completed extraction of Users:
+Records: 1,000
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-24 17:02:18,970 - src.load.datalake_loader - INFO - Starting raw zone load for Users
+2024-12-24 17:02:19,591 - src.load.datalake_loader - INFO - Completed raw zone load for Users:
+Records: 1,000
+Partitioning: not partitioned
+Duration: 0.57 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Users
+2024-12-24 17:02:19,591 - __main__ - INFO - Completed Users: 1,000 records processed in 0.76 seconds
+2024-12-24 17:02:19,591 - __main__ - INFO - Processing table: Drivers
+2024-12-24 17:02:19,591 - src.extract.mysql_extractor - INFO - Starting extraction of table Drivers
+2024-12-24 17:02:19,699 - src.extract.mysql_extractor - INFO - Completed extraction of Drivers:
+Records: 200
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-24 17:02:19,755 - src.load.datalake_loader - INFO - Starting raw zone load for Drivers
+2024-12-24 17:02:19,943 - src.load.datalake_loader - INFO - Completed raw zone load for Drivers:
+Records: 200
+Partitioning: not partitioned
+Duration: 0.13 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Drivers
+2024-12-24 17:02:19,944 - __main__ - INFO - Completed Drivers: 200 records processed in 0.35 seconds
+2024-12-24 17:02:19,944 - __main__ - INFO - Data extraction phase completed in 7.46 seconds
+2024-12-24 17:02:19,944 - __main__ - INFO - Starting data transformation phase
+2024-12-24 17:02:19,944 - src.transform.transform_executor - INFO - Starting transformation process
+Timestamp: 2024-12-24 09:43:35
+User: thuanpony03
+2024-12-24 17:02:19,944 - src.transform.transform_executor - INFO - Starting dimension transformation at 2024-12-24 09:43:35
+2024-12-24 17:02:19,944 - src.transform.dimension_builder - INFO - Building date dimension from 2024-01-01 to 2024-12-31
+2024-12-24 17:02:20,283 - src.transform.dimension_builder - INFO - Successfully built date dimension with 366 rows
+2024-12-24 17:02:20,447 - src.transform.dimension_builder - INFO - Building user dimension
+2024-12-24 17:02:20,693 - src.transform.dimension_builder - INFO - Successfully built user dimension with 1000 rows
+2024-12-24 17:02:20,730 - src.transform.dimension_builder - INFO - Building driver dimension
+2024-12-24 17:02:21,117 - src.transform.dimension_builder - INFO - Successfully built driver dimension with 200 rows
+2024-12-24 17:02:21,253 - src.transform.dimension_builder - INFO - Building location dimension
+2024-12-24 17:02:21,335 - src.transform.dimension_builder - ERROR - Error building location dimension: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `address` cannot be resolved. Did you mean one of the following? [`pickup_address`].;
+'Project ['address AS full_address#782]
++- Deduplicate [pickup_address#714]
+   +- Union false, false
+      :- Project [pickup_address#714]
+      :  +- Relation [order_id#712,user_id#713,pickup_address#714,delivery_address#715,package_description#716,package_weight#717,delivery_time#718,created_at#719,dl_ingestion_timestamp#720,dl_source_table#721,dl_batch_id#722,dl_process_date#723,created_at_partition#724,status#725] parquet
+      :- Project [delivery_address#766]
+      :  +- Relation [order_id#763,user_id#764,pickup_address#765,delivery_address#766,package_description#767,package_weight#768,delivery_time#769,created_at#770,dl_ingestion_timestamp#771,dl_source_table#772,dl_batch_id#773,dl_process_date#774,created_at_partition#775,status#776] parquet
+      +- Project [current_location#743]
+         +- Relation [shipment_id#740,order_id#741,driver_id#742,current_location#743,estimated_delivery_time#744,dl_ingestion_timestamp#745,dl_source_table#746,dl_batch_id#747,dl_process_date#748,status#749] parquet
+
+2024-12-24 17:02:21,337 - src.transform.transform_executor - ERROR - Error in dimension transformation: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `address` cannot be resolved. Did you mean one of the following? [`pickup_address`].;
+'Project ['address AS full_address#782]
++- Deduplicate [pickup_address#714]
+   +- Union false, false
+      :- Project [pickup_address#714]
+      :  +- Relation [order_id#712,user_id#713,pickup_address#714,delivery_address#715,package_description#716,package_weight#717,delivery_time#718,created_at#719,dl_ingestion_timestamp#720,dl_source_table#721,dl_batch_id#722,dl_process_date#723,created_at_partition#724,status#725] parquet
+      :- Project [delivery_address#766]
+      :  +- Relation [order_id#763,user_id#764,pickup_address#765,delivery_address#766,package_description#767,package_weight#768,delivery_time#769,created_at#770,dl_ingestion_timestamp#771,dl_source_table#772,dl_batch_id#773,dl_process_date#774,created_at_partition#775,status#776] parquet
+      +- Project [current_location#743]
+         +- Relation [shipment_id#740,order_id#741,driver_id#742,current_location#743,estimated_delivery_time#744,dl_ingestion_timestamp#745,dl_source_table#746,dl_batch_id#747,dl_process_date#748,status#749] parquet
+
+2024-12-24 17:02:21,340 - src.transform.transform_executor - ERROR - Transform process failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `address` cannot be resolved. Did you mean one of the following? [`pickup_address`].;
+'Project ['address AS full_address#782]
++- Deduplicate [pickup_address#714]
+   +- Union false, false
+      :- Project [pickup_address#714]
+      :  +- Relation [order_id#712,user_id#713,pickup_address#714,delivery_address#715,package_description#716,package_weight#717,delivery_time#718,created_at#719,dl_ingestion_timestamp#720,dl_source_table#721,dl_batch_id#722,dl_process_date#723,created_at_partition#724,status#725] parquet
+      :- Project [delivery_address#766]
+      :  +- Relation [order_id#763,user_id#764,pickup_address#765,delivery_address#766,package_description#767,package_weight#768,delivery_time#769,created_at#770,dl_ingestion_timestamp#771,dl_source_table#772,dl_batch_id#773,dl_process_date#774,created_at_partition#775,status#776] parquet
+      +- Project [current_location#743]
+         +- Relation [shipment_id#740,order_id#741,driver_id#742,current_location#743,estimated_delivery_time#744,dl_ingestion_timestamp#745,dl_source_table#746,dl_batch_id#747,dl_process_date#748,status#749] parquet
+
+2024-12-24 17:02:21,341 - __main__ - ERROR - Error in transformation phase: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `address` cannot be resolved. Did you mean one of the following? [`pickup_address`].;
+'Project ['address AS full_address#782]
++- Deduplicate [pickup_address#714]
+   +- Union false, false
+      :- Project [pickup_address#714]
+      :  +- Relation [order_id#712,user_id#713,pickup_address#714,delivery_address#715,package_description#716,package_weight#717,delivery_time#718,created_at#719,dl_ingestion_timestamp#720,dl_source_table#721,dl_batch_id#722,dl_process_date#723,created_at_partition#724,status#725] parquet
+      :- Project [delivery_address#766]
+      :  +- Relation [order_id#763,user_id#764,pickup_address#765,delivery_address#766,package_description#767,package_weight#768,delivery_time#769,created_at#770,dl_ingestion_timestamp#771,dl_source_table#772,dl_batch_id#773,dl_process_date#774,created_at_partition#775,status#776] parquet
+      +- Project [current_location#743]
+         +- Relation [shipment_id#740,order_id#741,driver_id#742,current_location#743,estimated_delivery_time#744,dl_ingestion_timestamp#745,dl_source_table#746,dl_batch_id#747,dl_process_date#748,status#749] parquet
+
+2024-12-24 17:02:21,342 - __main__ - ERROR - Pipeline failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column or function parameter with name `address` cannot be resolved. Did you mean one of the following? [`pickup_address`].;
+'Project ['address AS full_address#782]
++- Deduplicate [pickup_address#714]
+   +- Union false, false
+      :- Project [pickup_address#714]
+      :  +- Relation [order_id#712,user_id#713,pickup_address#714,delivery_address#715,package_description#716,package_weight#717,delivery_time#718,created_at#719,dl_ingestion_timestamp#720,dl_source_table#721,dl_batch_id#722,dl_process_date#723,created_at_partition#724,status#725] parquet
+      :- Project [delivery_address#766]
+      :  +- Relation [order_id#763,user_id#764,pickup_address#765,delivery_address#766,package_description#767,package_weight#768,delivery_time#769,created_at#770,dl_ingestion_timestamp#771,dl_source_table#772,dl_batch_id#773,dl_process_date#774,created_at_partition#775,status#776] parquet
+      +- Project [current_location#743]
+         +- Relation [shipment_id#740,order_id#741,driver_id#742,current_location#743,estimated_delivery_time#744,dl_ingestion_timestamp#745,dl_source_table#746,dl_batch_id#747,dl_process_date#748,status#749] parquet
+
+2024-12-24 17:02:21,345 - py4j.clientserver - INFO - Closing down clientserver connection

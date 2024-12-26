@@ -1,0 +1,88 @@
+2024-12-25 10:42:53,854 - __main__ - INFO - Starting logistics data pipeline
+User: ponydasierra
+Environment: development
+Start Time (UTC): 2024-12-25 03:42:50.313145
+2024-12-25 10:42:53,854 - __main__ - INFO - Starting data extraction phase
+2024-12-25 10:42:53,854 - __main__ - INFO - Processing table: Orders
+2024-12-25 10:42:53,854 - src.extract.mysql_extractor - INFO - Starting extraction of table Orders
+2024-12-25 10:42:56,636 - src.extract.mysql_extractor - INFO - Completed extraction of Orders:
+Records: 5,000
+Partitions: 4
+Duration: 2.39 seconds
+2024-12-25 10:42:56,745 - src.load.datalake_loader - INFO - Starting raw zone load for Orders
+2024-12-25 10:42:58,324 - src.load.datalake_loader - INFO - Completed raw zone load for Orders:
+Records: 5,000
+Partitioning: partitioned by ['created_at_partition', 'status']
+Duration: 1.51 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Orders
+2024-12-25 10:42:58,324 - __main__ - INFO - Completed Orders: 5,000 records processed in 4.47 seconds
+2024-12-25 10:42:58,324 - __main__ - INFO - Processing table: Shipments
+2024-12-25 10:42:58,324 - src.extract.mysql_extractor - INFO - Starting extraction of table Shipments
+2024-12-25 10:42:58,451 - src.extract.mysql_extractor - INFO - Completed extraction of Shipments:
+Records: 3,756
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:42:58,501 - src.load.datalake_loader - INFO - Starting raw zone load for Shipments
+2024-12-25 10:42:58,754 - src.load.datalake_loader - INFO - Completed raw zone load for Shipments:
+Records: 3,756
+Partitioning: partitioned by ['status']
+Duration: 0.21 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Shipments
+2024-12-25 10:42:58,754 - __main__ - INFO - Completed Shipments: 3,756 records processed in 0.43 seconds
+2024-12-25 10:42:58,754 - __main__ - INFO - Processing table: Payments
+2024-12-25 10:42:58,754 - src.extract.mysql_extractor - INFO - Starting extraction of table Payments
+2024-12-25 10:42:58,858 - src.extract.mysql_extractor - INFO - Completed extraction of Payments:
+Records: 5,000
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:42:58,933 - src.load.datalake_loader - INFO - Starting raw zone load for Payments
+2024-12-25 10:42:59,167 - src.load.datalake_loader - INFO - Completed raw zone load for Payments:
+Records: 5,000
+Partitioning: partitioned by ['payment_date_partition', 'payment_status']
+Duration: 0.19 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Payments
+2024-12-25 10:42:59,167 - __main__ - INFO - Completed Payments: 5,000 records processed in 0.41 seconds
+2024-12-25 10:42:59,167 - __main__ - INFO - Processing table: Notifications
+2024-12-25 10:42:59,167 - src.extract.mysql_extractor - INFO - Starting extraction of table Notifications
+2024-12-25 10:42:59,252 - src.extract.mysql_extractor - INFO - Completed extraction of Notifications:
+Records: 3,756
+Partitions: 4
+Duration: 0.04 seconds
+2024-12-25 10:42:59,294 - src.load.datalake_loader - INFO - Starting raw zone load for Notifications
+2024-12-25 10:42:59,907 - src.load.datalake_loader - INFO - Completed raw zone load for Notifications:
+Records: 3,756
+Partitioning: partitioned by ['notification_date_partition']
+Duration: 0.57 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Notifications
+2024-12-25 10:42:59,907 - __main__ - INFO - Completed Notifications: 3,756 records processed in 0.74 seconds
+2024-12-25 10:42:59,907 - __main__ - INFO - Processing table: Users
+2024-12-25 10:42:59,907 - src.extract.mysql_extractor - INFO - Starting extraction of table Users
+2024-12-25 10:42:59,962 - src.extract.mysql_extractor - INFO - Completed extraction of Users:
+Records: 1,000
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-25 10:42:59,996 - src.load.datalake_loader - INFO - Starting raw zone load for Users
+2024-12-25 10:43:00,116 - src.load.datalake_loader - INFO - Completed raw zone load for Users:
+Records: 1,000
+Partitioning: not partitioned
+Duration: 0.08 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Users
+2024-12-25 10:43:00,117 - __main__ - INFO - Completed Users: 1,000 records processed in 0.21 seconds
+2024-12-25 10:43:00,117 - __main__ - INFO - Processing table: Drivers
+2024-12-25 10:43:00,117 - src.extract.mysql_extractor - INFO - Starting extraction of table Drivers
+2024-12-25 10:43:00,175 - src.extract.mysql_extractor - INFO - Completed extraction of Drivers:
+Records: 200
+Partitions: 1
+Duration: 0.01 seconds
+2024-12-25 10:43:00,225 - src.load.datalake_loader - INFO - Starting raw zone load for Drivers
+2024-12-25 10:43:00,346 - src.load.datalake_loader - INFO - Completed raw zone load for Drivers:
+Records: 200
+Partitioning: not partitioned
+Duration: 0.08 seconds
+Path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake/raw/Drivers
+2024-12-25 10:43:00,347 - __main__ - INFO - Completed Drivers: 200 records processed in 0.23 seconds
+2024-12-25 10:43:00,347 - __main__ - INFO - Data extraction phase completed in 6.49 seconds
+2024-12-25 10:43:00,347 - __main__ - INFO - Starting data transformation phase
+2024-12-25 10:43:00,347 - __main__ - ERROR - Error in transformation phase: 'TransformExecutor' object has no attribute 'execute_transform'
+2024-12-25 10:43:00,347 - __main__ - ERROR - Pipeline failed: 'TransformExecutor' object has no attribute 'execute_transform'
+2024-12-25 10:43:00,347 - py4j.clientserver - INFO - Closing down clientserver connection

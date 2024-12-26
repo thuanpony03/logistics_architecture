@@ -1,0 +1,11 @@
+2024-12-24 01:47:35,957 - __main__ - INFO - Starting logistics data pipeline
+2024-12-24 01:47:35,957 - __main__ - INFO - Starting data extraction phase
+2024-12-24 01:47:39,067 - src.extract.mysql_extractor - INFO - Extracted table Users with 1000 records (partitioned)
+2024-12-24 01:47:39,777 - src.extract.mysql_extractor - INFO - Extracted table Drivers with 200 records (partitioned)
+2024-12-24 01:47:40,345 - src.extract.mysql_extractor - INFO - Extracted table Orders with 5168 records (partitioned)
+2024-12-24 01:47:40,828 - src.extract.mysql_extractor - INFO - Extracted table Shipments with 3459 records (partitioned)
+2024-12-24 01:47:41,293 - src.extract.mysql_extractor - INFO - Extracted table Payments with 5168 records (partitioned)
+2024-12-24 01:47:41,576 - src.extract.mysql_extractor - INFO - Extracted table Notifications with 9182 records
+2024-12-24 01:47:41,616 - __main__ - INFO - Data extraction completed in 5.66 seconds
+2024-12-24 01:47:41,616 - __main__ - INFO - Pipeline completed successfully in 5.66 seconds
+2024-12-24 01:47:41,617 - py4j.clientserver - INFO - Closing down clientserver connection
