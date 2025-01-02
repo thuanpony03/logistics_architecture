@@ -1,8 +1,0 @@
-2024-12-26 14:07:35,045 - __main__ - INFO - Starting logistics data pipeline
-User: ponydasierra
-Environment: development
-Start Time (UTC): 2024-12-26 07:07:32.490788
-2024-12-26 14:07:35,045 - __main__ - INFO - Starting data extraction phase
-2024-12-26 14:07:35,045 - __main__ - ERROR - Error in extraction phase: 'tables'
-2024-12-26 14:07:35,045 - __main__ - ERROR - Pipeline failed: 'tables'
-2024-12-26 14:07:35,045 - py4j.clientserver - INFO - Closing down clientserver connection

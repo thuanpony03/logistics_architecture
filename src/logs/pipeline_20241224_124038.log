@@ -1,8 +1,0 @@
-2024-12-24 12:40:38,780 - __main__ - INFO - Starting logistics data pipeline
-2024-12-24 12:40:38,780 - __main__ - INFO - Starting data extraction phase
-2024-12-24 12:40:42,014 - src.extract.mysql_extractor - INFO - Extracted table Users with 1000 records (partitioned)
-2024-12-24 12:40:42,358 - load.datalake_loader - INFO - Partition columns: user_id!!!!!!!!!!!!!!!
-2024-12-24 12:40:42,736 - load.datalake_loader - ERROR - Error loading Users to raw zone: Partition column `u` not found in schema struct<user_id:int,full_name:string,email:string,password_hash:string,phone_number:string,address:string,role:string,created_at:timestamp,dl_ingestion_timestamp:timestamp,dl_source_table:string,dl_batch_id:string>.
-2024-12-24 12:40:42,738 - __main__ - ERROR - Error in extraction phase: Partition column `u` not found in schema struct<user_id:int,full_name:string,email:string,password_hash:string,phone_number:string,address:string,role:string,created_at:timestamp,dl_ingestion_timestamp:timestamp,dl_source_table:string,dl_batch_id:string>.
-2024-12-24 12:40:42,738 - __main__ - ERROR - Pipeline failed: Partition column `u` not found in schema struct<user_id:int,full_name:string,email:string,password_hash:string,phone_number:string,address:string,role:string,created_at:timestamp,dl_ingestion_timestamp:timestamp,dl_source_table:string,dl_batch_id:string>.
-2024-12-24 12:40:42,752 - py4j.clientserver - INFO - Closing down clientserver connection

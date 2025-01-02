@@ -1,0 +1,2 @@
+2024-12-28 04:50:54,679 - src.load.datalake_loader - ERROR - Error initializing zones: Wrong FS: hdfs://namenode:9000/user/thuanpony03/logistics/data/datalake/raw, expected: hdfs://localhost:9000
+2024-12-28 04:50:54,681 - py4j.clientserver - INFO - Closing down clientserver connection

@@ -58,7 +58,7 @@ warehouse:
 
 # Data Lake Configuration
 datalake:
-  base_path: hdfs://localhost:9000/user/thuanpony03/logistics/data/datalake
+  base_path: /user/thuanpony03/logistics/data/datalake
   zones:
     raw: raw  # Raw data from source
     staging: staging  # Temporary transformation area
@@ -73,7 +73,7 @@ datalake:
 # Spark Configuration
 spark:
   app_name: "Logistics Data Pipeline"
-  master: "local[*]"
+  master: "spark://spark-master:7077"
   driver_memory: "4g"
   executor_memory: "4g"
   config:
@@ -92,7 +92,7 @@ spark:
     # Performance Optimization
     "spark.sql.files.maxPartitionBytes": "134217728"  # 128MB
     "spark.sql.files.openCostInBytes": "134217728"  # 128MB
-    "spark.hadoop.fs.defaultFS": "hdfs://localhost:9000"
+    "spark.hadoop.fs.defaultFS": "hdfs://namenode:9000"
 
     # Compression and File Format
     "spark.sql.parquet.compression.codec": "snappy"

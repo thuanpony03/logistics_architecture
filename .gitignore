@@ -1,0 +1,4 @@
+clickhouse-data/*
+clickhouse-logs/*
+grafana-data/*
+hadoop/*

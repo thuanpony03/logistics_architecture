@@ -1,0 +1,21 @@
+{
+    "name": "hdfs-sink-connector",
+    "config": {
+        "connector.class": "io.confluent.connect.hdfs3.Hdfs3SinkConnector",
+        "tasks.max": "1",
+        "topics": "logistics.db_logistics.Users, logistics.db_logistics.Orders, logistics.db_logistics.Payments, logistics.db_logistics.Drivers, logistics.db_logistics.Notifications, logistics.db_logistics.Shipments",
+        "hdfs.url": "hdfs://namenode:9000",
+        "flush.size": "1000",
+        "topics.dir": "/user/thuanpony03/logistics/data/streaming",
+        "logs.dir": "/user/thuanpony03/logistics/data/logs",
+        "format.class": "io.confluent.connect.hdfs3.json.JsonFormat",
+        "partitioner.class": "io.confluent.connect.storage.partitioner.TimeBasedPartitioner",
+        "path.format": "YYYY/MM/dd/HH",
+        "partition.duration.ms": "3600000",
+        "rotate.interval.ms": "60000",
+        "locale": "UTC",
+        "timezone": "UTC",
+        "confluent.topic.bootstrap.servers": "kafka:29092",
+        "confluent.topic.replication.factor": "1"
+    }
+}
